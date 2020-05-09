@@ -3,7 +3,7 @@ def call(jsondata){
 
 def jsonString = jsondata
 def jsonObj = readJSON text: jsonString
-String a = ci.pipelines.pipeline.pipeline_name
+String a = jsonObj.ci.pipelines.pipeline.pipeline_name
 String job_name = a.replace("[","").replace("]","")
 
 
