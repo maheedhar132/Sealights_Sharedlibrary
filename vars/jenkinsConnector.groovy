@@ -27,8 +27,9 @@ def env = rigEnv
 	String ci_toolName=jsonObj.ci.tool.name
 	
 	String rigletName=jsonObj.riglet_info.name
-	String jenkins_job_name=jsonObj.ci.pipelines.pipeline.$pipeline_name
-	
+	String a=jsonObj.ci.pipelines.pipeline.$pipeline_name
+	String jenkins_job_name=a.replace("[","").replace("]","")
+	println(jenkins_job_name)
 	
 	
 	def output = utils.getToolDetails(rigUrl,code_quality_toolName,rigletName)
