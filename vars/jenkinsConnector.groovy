@@ -104,7 +104,7 @@ def env = rigEnv
 	
 	   sh 'curl -O https://repo.jenkins-ci.org/public/org/jenkins-ci/plugins/job-dsl-core/1.76/job-dsl-core-1.76-standalone.jar'
      
-       sh "java -jar job-dsl-core-1.76-standalone.jar  vars/java_pipeline_template.groovy"
+       sh "java -jar job-dsl-core-1.76-standalone.jar  vars/slNodeTemplete.groovy"
        
       createJob(jenkins_user,jenkins_pass,jenkins_url,jenkins_job_name)    // for job creation
       String proj_url = jenkins_url + "job" + "/" + jenkins_job_name  // url of the jenkins job
