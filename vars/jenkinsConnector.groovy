@@ -38,8 +38,8 @@ def env = rigEnv
      println("Successfully fetched the tool details")
     }
 	def resultJson = readJSON text: new_output
-	String agentToken = new_output.agentToken
-	String apiToken = new_output.apiToken
+	String agentToken = resultJson.agentToken
+	String apiToken = resultJson.apiToken
 	println(agentToken)
 	
 	
