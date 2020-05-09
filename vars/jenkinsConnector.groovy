@@ -24,7 +24,7 @@ def env = rigEnv
        a++;
      }
 	String toolName=jsonObj.code_quality.tool.name
-	String rigletName=jsonObj.blueprint_info.name
+	String rigletName=jsonObj.riglet_info.name
 	
 	def output = utils.getToolDetails(rigUrl,toolName,rigletName)
     def new_output = output.substring(0, output.lastIndexOf("}")  + 1)       
