@@ -1,4 +1,4 @@
-
+@NonCPS
 createJob(jenkins_user,jenkins_pass,jenkins_url,jenkins_job_name)
 {
     sh """
