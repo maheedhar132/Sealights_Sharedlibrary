@@ -65,6 +65,7 @@ def env = rigEnv
      def result = readJSON text: new_output
      String jenkins_user = result.userName
      String jenkins_pass = result.password
+	 println(jenkins_pass)
      String jenkins_url = result.url
 	
 	def git_scm_url = "https://github.com/maheedhar132/Game.git"
