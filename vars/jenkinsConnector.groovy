@@ -102,9 +102,9 @@ def env = rigEnv
        def newConfig = file.text.replace('${job_name}', jenkins_job_name).replace('${branch_name}', git_branch_name).replace('${cred}', cred).replace('${scm_url}', git_scm_url)
        file.text = newConfig
 	
-	   sh 'curl -O https://repo.jenkins-ci.org/public/org/jenkins-ci/plugins/job-dsl-core/1.76/job-dsl-core-1.76-standalone.jar'
+	   sh 'curl -O https://repo.jenkins-ci.org/public/org/jenkins-ci/plugins/job-dsl-core/1.77/job-dsl-core-1.77-standalone.jar'
      
-       sh "java -jar job-dsl-core-1.76-standalone.jar  vars/slNodeTemplete.groovy"
+       sh "java -jar job-dsl-core-1.77-standalone.jar  vars/slNodeTemplete.groovy"
        
       createJob(jenkins_user,jenkins_pass,jenkins_url,jenkins_job_name)    // for job creation
       String proj_url = jenkins_url + "job" + "/" + jenkins_job_name  // url of the jenkins job
