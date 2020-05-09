@@ -40,8 +40,9 @@ def env = rigEnv
 	def resultJson = readJSON text: new_output
 	String agentToken = resultJson.agentToken
 	String apiToken = resultJson.apiToken
-	File file = new File("node_sltoken.txt")
-	file.write(agentToken)
+	/*File file = new File("node_sltoken.txt")
+	file.write(agentToken)*/
+	sh "echo '${apiToken}' > node_sltoken.txt"
 	
 	
 	
