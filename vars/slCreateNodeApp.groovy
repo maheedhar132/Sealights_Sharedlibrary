@@ -8,7 +8,7 @@ String job_name = a.replace("[","").replace("]","")
 //String gitRepoName = jsonObj.scm.projects.project[0].project_name
 
 
-
+sh "sudo rm -rf Game"
 sh "git clone https://github.com/maheedhar132/Game.git"
 sh "cd Game && sudo npm i slnodejs"
 sh "cd Game/client && sudo npm i slnodejs"
