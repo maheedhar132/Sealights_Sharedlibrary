@@ -110,7 +110,7 @@ def env = rigEnv
        
       createJob(jenkins_user,jenkins_pass,jenkins_url,jenkins_job_name)    // for job creation
       String proj_url = jenkins_url + "job" + "/" + jenkins_job_name  // url of the jenkins job
-      utils.saveToolProjectInfo(rigUrl,rigletName,toolName,jenkins_job_name,jenkins_job_name,proj_url)
+      utils.saveToolProjectInfo(rigUrl,rigletName,ci_toolName,jenkins_job_name,jenkins_job_name,proj_url)
        
 	
 	
