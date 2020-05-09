@@ -69,16 +69,8 @@ def env = rigEnv
 	
 	def git_scm_url = "https://github.com/maheedhar132/Game.git"
     def git_branch_name = "master"
-	def cred = "maheedhar132"
-	
-	
-	
-	
-	
-	def git_scm_url = "https://github.com/maheedhar132/Sealights_Sharedlibrary.git"
-    def git_branch_name = "master"
-    def cred = "maheedhar132"
-    def pipeline_template = WORKSPACE + "/vars/java_pipeline_template.groovy"
+	def cred = "maheedhar"
+    def pipeline_template = WORKSPACE + "/vars/slNodeTemplete.groovy"
     checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'mahi-github', url: 'https://github.com/maheedhar132/Sealights_Sharedlibrary.git']]])
 	
 	
