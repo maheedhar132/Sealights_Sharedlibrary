@@ -69,10 +69,8 @@ sh "cd /home/'${projName}' &&sudo git push origin master"
 */
 
  sh """ cd '${projName}'
-         git checkout -b master
-         npm --no-git-tag-version version minor
-         git commit -am 'First Commit'
-         git push origin master
+        git commit -am 'First Commit'
+        git push origin master
       """
 
 
