@@ -48,7 +48,10 @@ def env = rigEnv
 	String apiToken = resultJson.apiToken
 	/*File file = new File("node_sltoken.txt")
 	file.write(agentToken)*/
-	sh "echo '${apiToken}' > node_sltoken.txt"
+	
+	sh "rm -rf node_sltoken.txt"
+	 
+	sh "echo '${agentToken}' > node_sltoken.txt"
 	
 	//Fetch CI tool Details
 	output = utils.getToolDetails(rigUrl,ci_toolName,rigletName)
