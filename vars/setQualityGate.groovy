@@ -36,7 +36,7 @@ def output1 = utils.getToolDetails(rigUrl,code_quality_toolName,rigletName)
 def mC=jsonObj.code_quality.applications.application[0].quality_gate[0].metrics[0].error
 println(mC)
 def oC=jsonObj.code_quality.applications.application[0].quality_gate[0].metrics[1].error
-String appName=jsonObj.scm.projects.project[0].project_name
+String appName=jsonObj.scm.projects.project[0].$project_name
 
 sh """ curl --location --request POST 'https://wipro.sealights.co//sl-api/v1/apps/${appName}/quality-gates' \
 --header 'Content-Type: application/json' \
