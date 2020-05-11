@@ -78,15 +78,13 @@ if( creation_status == true)         // if project needs to be created
      if( response_code == "201" || response_code == "200")
      {
        println(" Project creation success");
-       utils.statusChange(rigUrl,rigletName,toolName,"Project creation","success")
-       /*if ( nameExists == true){
-         println("project created but with name "+projName);
-         utils.statusChange(rigUrl,rigletName,toolName,"Project creation","project created but with name "+projName)}*/
+      // utils.statusChange(rigUrl,rigletName,toolName,"Project creation","success")
+
       }
      else
       {
      println(" Project creation failure");
-     utils.statusChange(rigUrl,rigletName,toolName,"Project creation","failure")
+    // utils.statusChange(rigUrl,rigletName,toolName,"Project creation","failure")
     
       }
 
