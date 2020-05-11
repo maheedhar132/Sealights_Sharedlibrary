@@ -1,22 +1,76 @@
 def call(jsondata){
 
 
-def jsonString = jsondata
+def env = rigEnv
+ def jsonString = jsondata
 def jsonObj = readJSON text: jsonString
-String a = jsonObj.ci.pipelines.pipeline.pipeline_name
-String job_name = a.replace("[","").replace("]","")
-//String gitRepoName = jsonObj.scm.projects.project[0].project_name
+def jsonString2 = libraryResource 'data.json'
+def jsonObj2 = readJSON text: jsonString2
+int envCount = jsonObj2.environment.size();
+String rigUrl
+int a = 0;   //
+while (a < envCount)
+{
+  if (jsonObj2.environment[a].name == env)
+   {
+    rigUrl=jsonObj2.environment[a].rigUrl
+   }
+   a++;
+}
+
+String toolName=jsonObj.scm.tool.name
+String rigletName=jsonObj.riglet_info.name
+
+String projName=jsonObj.scm.projects.project[0].project_name
+String projDescription=jsonObj.scm.projects.project[0].project_description
+String projId=projName  // TEMPORARY
+boolean creation_status=jsonObj.scm.projects.project[0].create
 
 
-sh "sudo rm -rf Game"
-sh "git clone https://github.com/maheedhar132/Game.git"
-sh "cd Game && sudo npm i slnodejs"
-sh "cd Game/client && sudo npm i slnodejs"
-sh "Game/node_modules/.bin/slnodejs config --tokenfile /var/lib/jenkins/workspace/Game/node_sltoken.txt --appname '${job_name}' --branch 'master' --build 0"
-sh "cd Game/client && sudo npm install"
-sh "cd Game && sudo npm install"
-sh "cd Game/client && sudo npm run build"
-sh 'cd Game/client && Game/node_modules/.bin/slnodejs build --tokenfile /var/lib/jenkins/workspace/Game/node_sltoken.txt --buildsessionidfile /var/lib/jenkins/workspace/Game/buildSessionId --instrumentForBrowsers  --workspacepath build --outputpath sl_build --scm none'
-sh "mv Game/client/build Game/client/old_build"
-sh "mv Game/client/sl_build Game/client/build"
+def output = utils.getToolDetails(rigUrl,toolName,rigletName)
+def new_output = output.substring(0, output.lastIndexOf("}")  + 1)       
+def response_code_status = output.substring(output.lastIndexOf("}") +1, output.lastIndexOf("}") +4)    // for getting response code
+if (response_code_status != "200")
+  {
+      println("Failed to reach backend url")
+  }
+  else
+  {
+      println("Successfully fetched the tool details")
+  }// function for getting tool details
+def resultJson = readJSON text: new_output
+String user = resultJson.userName
+String pass = resultJson.password
+String url = resultJson.url
+
+String projUrlName=projName.toLowerCase()
+
+sh  "rm -rf '${projUrlName}'"
+
+sh "sudo git clone https://'${user}':'${pass}'@gitlab.com/'${user}'/'${projUrlName}'.git"
+
+
+sh "cd '${projUrlName}' && sudo npm i slnodejs"
+
+sh "cd '${projUrlName}'/client && sudo npm i slnodejs"
+		
+sh "./'${projUrlName}'/node_modules/.bin/slnodejs config --tokenfile /var/lib/jenkins/workspace/${JOB_NAME}/node_sltoken.txt --appname '${projName}' --branch 'master' --build 0"
+
+sh "export SL_BUILD_SESSION_ID=`cat buildSessionId`"
+
+
+sh "cd '${projUrlName}'/client && sudo npm install"
+
+sh "cd '${projUrlName}' && sudo npm install"
+
+sh "cd '${projUrlName}'/client && sudo npm run build"
+
+sh 'cd '${projUrlName}'/client && ./node_modules/.bin/slnodejs build --tokenfile /var/lib/jenkins/workspace/${JOB_NAME}/node_sltoken.txt --buildsessionidfile /var/lib/jenkins/workspace/${JOB_NAME}/buildSessionId --instrumentForBrowsers  --workspacepath build --outputpath sl_build --scm none'
+
+
+
+
+
+
+
 }
