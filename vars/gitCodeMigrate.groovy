@@ -46,7 +46,7 @@ String url = resultJson.url
 
 sh "cd /home && sudo rm -rf '${basecodeRepoName}'"
 
-sh "cd /home  && git clone '${basecodeUrl}'"
+sh "cd /home  && sudo git clone '${basecodeUrl}'"
 
 String projUrlName=projName.toLowerCase()
 
@@ -54,7 +54,7 @@ sh "cd /home && sudo rm -rf '${projName}'"
 
 sh "cd /home && sudo rm -rf '${projUrlName}'"
 
-sh "cd /home && git clone https://'${user}':'${pass}'@gitlab.com/'${user}'/'${projUrlName}'.git"
+sh "cd /home && sudo git clone https://'${user}':'${pass}'@gitlab.com/'${user}'/'${projUrlName}'.git"
 
 sh "sudo cp -ar /home/'${basecodeRepoName}' /home/'${projName}'"
 
