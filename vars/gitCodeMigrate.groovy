@@ -59,7 +59,7 @@ sh "cd .. && sudo git clone https://'${user}':'${pass}'@gitlab.com/'${user}'/'${
 
 sh "cd ../'${basecodeRepoName}' && sudo rm -rf .git"
 
-sh "sudo cp -ar ../'${basecodeRepoName}' ../'${projUrlName}'"
+sh "sudo cp -ar ../'${basecodeRepoName}'/ ../'${projUrlName}'/"
 
 /*sh "cd /home/'${projName}' &&sudo git add ."
 
