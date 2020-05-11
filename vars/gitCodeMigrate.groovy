@@ -44,28 +44,28 @@ String url = resultJson.url
 
 //The Actual Cloning Stage
 
-sh "sudo rm -rf '${basecodeRepoName}'"
+sh "cd /home && sudo rm -rf '${basecodeRepoName}'"
 
-sh "git clone '${basecodeUrl}'"
+sh "cd /home  && git clone '${basecodeUrl}'"
 
 String projUrlName=projName.toLowerCase()
 
-sh "sudo rm -rf '${projName}'"
+sh "cd /home && sudo rm -rf '${projName}'"
 
-sh "sudo rm -rf '${projUrlName}'"
+sh "cd /home && sudo rm -rf '${projUrlName}'"
 
-sh "git clone https://'${user}':'${pass}'@gitlab.com/'${user}'/'${projUrlName}'.git"
+sh "cd /home && git clone https://'${user}':'${pass}'@gitlab.com/'${user}'/'${projUrlName}'.git"
 
-sh "sudo cp -ar '${basecodeRepoName}' '${projName}'"
+sh "sudo cp -ar /home/'${basecodeRepoName}' /home/'${projName}'"
 
-sh "cd '${projName}' &&sudo git add ."
+//sh "cd /home/'${projName}' &&sudo git add ."
 
-sh "cd '${projName}' &&sudo git commit -m 'migrated'"
+sh "cd /home/'${projName}' &&sudo git commit -am 'migrated'"
 
-sh "cd '${projName}' &&sudo git remote set-url origin git@gitlab.com:'${user}'/'${projUrlName}'.git"
+sh "cd /home/'${projName}' &&sudo git remote set-url origin git@gitlab.com:'${user}'/'${projUrlName}'.git"
 
 
-sh "cd '${projName}' &&sudo git push origin master"
+sh "cd /home/'${projName}' &&sudo git push origin master"
 
 
 
