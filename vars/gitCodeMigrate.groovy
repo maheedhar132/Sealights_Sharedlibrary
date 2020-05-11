@@ -58,7 +58,7 @@ sh "cd /home && sudo git clone https://'${user}':'${pass}'@gitlab.com/'${user}'/
 
 sh "sudo cp -ar /home/'${basecodeRepoName}' /home/'${projName}'"
 
-//sh "cd /home/'${projName}' &&sudo git add ."
+sh "cd /home/'${projName}' &&sudo git add ."
 
 sh "cd /home/'${projName}' &&sudo git commit -am 'migrated'"
 
