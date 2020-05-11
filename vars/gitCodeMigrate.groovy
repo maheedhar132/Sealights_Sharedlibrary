@@ -52,7 +52,7 @@ String projUrlName=projName.toLowerCase()
 
 sh "sudo rm -rf '${projName}'"
 
-sh "git clone https://'${user}:${pass}@gitlab.com/${user}/'${projUrlName}'.git"
+sh "git clone https://'${user}':'${pass}'@gitlab.com/'${user}'/'${projUrlName}'.git"
 
 sh "sudo cp -ar '${basecodeRepoName}' '${projName}'"
 
