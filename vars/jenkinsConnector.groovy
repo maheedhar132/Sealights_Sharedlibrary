@@ -70,7 +70,7 @@ boolean creation_status=jsonObj.scm.projects.project[0].create
 
 def output_scm = utils.getToolDetails(rigUrl,scm_toolName,rigletName)
 def new_output_scm = output_scm.substring(0, output_scm.lastIndexOf("}")  + 1)       
-def response_code_status_scm = output1.substring(output_scm.lastIndexOf("}") +1, output_scm.lastIndexOf("}") +4)    // for getting response code
+def response_code_status_scm = output_scm.substring(output_scm.lastIndexOf("}") +1, output_scm.lastIndexOf("}") +4)    // for getting response code
 if (response_code_status_scm != "200")
   {
       println("Failed to reach backend url")
