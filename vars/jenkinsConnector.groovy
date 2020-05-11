@@ -60,7 +60,7 @@ def env = rigEnv
 	//GIT SCM TOOL Details
 	
 	String scm_toolName=jsonObj.scm.tool.name
-String rigletName=jsonObj.riglet_info.$name
+//String rigletName=jsonObj.riglet_info.$name
 
 String projName=jsonObj.scm.projects.project[0].$project_name
 String projDescription=jsonObj.scm.projects.project[0].project_description
