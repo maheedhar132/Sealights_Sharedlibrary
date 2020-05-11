@@ -45,7 +45,7 @@ String url = resultJson.url
 
 String projUrlName=projName.toLowerCase()
 
-sh  "rm -rf '${projUrlName}'"
+sh  "sudo rm -rf '${projUrlName}'"
 
 sh "sudo git clone https://'${user}':'${pass}'@gitlab.com/'${user}'/'${projUrlName}'.git"
 
