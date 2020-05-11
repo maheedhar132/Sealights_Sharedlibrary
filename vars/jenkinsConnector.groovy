@@ -49,9 +49,11 @@ def env = rigEnv
 	/*File file = new File("node_sltoken.txt")
 	file.write(agentToken)*/
 	
-	sh "rm -rf node_sltoken.txt"
+	sh "sudo rm -rf node_sltoken.txt"
 	 
-	sh "echo '${agentToken}' > node_sltoken.txt"
+	sh "sudo echo '${agentToken}' > node_sltoken.txt"
+	
+	sh "ls -a"
 	
 	//Fetch CI tool Details
 	output = utils.getToolDetails(rigUrl,ci_toolName,rigletName)
