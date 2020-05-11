@@ -55,6 +55,8 @@ def env = rigEnv
 	
 	sh "ls -a"
 	
+	sh "pwd"
+	
 	//Fetch CI tool Details
 	output = utils.getToolDetails(rigUrl,ci_toolName,rigletName)
      new_output = output.substring(0, output.lastIndexOf("}")  + 1)       
