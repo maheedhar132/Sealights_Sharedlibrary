@@ -22,7 +22,7 @@ String code_quality_toolName=jsonObj.code_quality.tool.name
 String rigletName=jsonObj.riglet_info.name
 
 def output1 = utils.getToolDetails(rigUrl,code_quality_toolName,rigletName)
-    def new_output1 = output1.substring(0, output.lastIndexOf("}")  + 1)       
+    def new_output1 = output1.substring(0, output1.lastIndexOf("}")  + 1)       
     def response_code_status1 = output1.substring(output1.lastIndexOf("}") +1, output1.lastIndexOf("}") +4)    // for getting response code
     if (response_code_status1 != "200")
     {
