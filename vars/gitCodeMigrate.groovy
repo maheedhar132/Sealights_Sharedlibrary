@@ -44,17 +44,17 @@ String url = resultJson.url
 
 //The Actual Cloning Stage
 
-sh "rm -rf '${basecodeRepoName}'"
+sh "sudo rm -rf '${basecodeRepoName}'"
 
 sh "git clone '${basecodeUrl}'"
 
 String projUrlName=projName.toLowerCase()
 
-sh "rm -rf '${projName}'"
+sh "sudo rm -rf '${projName}'"
 
 sh "git clone https://'${user}:${pass}@gitlab.com/${user}/'${projUrlName}'.git"
 
-sh "cp -ar '${basecodeRepoName}' '${projName}'"
+sh "sudo cp -ar '${basecodeRepoName}' '${projName}'"
 
 sh "cd '${projName}' && git add ."
 
