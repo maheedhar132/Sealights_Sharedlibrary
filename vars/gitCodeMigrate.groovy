@@ -44,21 +44,21 @@ String url = resultJson.url
 
 //The Actual Cloning Stage
 
-sh "cd /home && sudo rm -rf '${basecodeRepoName}'"
+sh "sudo rm -rf '${basecodeRepoName}'"
 
-sh "cd /home  && sudo git clone '${basecodeUrl}'"
+sh "sudo git clone '${basecodeUrl}'"
 
 String projUrlName=projName.toLowerCase()
 
-sh "cd /home && sudo rm -rf '${projName}'"
+sh "sudo rm -rf '${projName}'"
 
-sh "cd /home && sudo rm -rf '${projUrlName}'"
+sh " sudo rm -rf '${projUrlName}'"
 
-sh "cd /home && sudo git clone https://'${user}':'${pass}'@gitlab.com/'${user}'/'${projUrlName}'.git"
+sh "sudo git clone https://'${user}':'${pass}'@gitlab.com/'${user}'/'${projUrlName}'.git"
 
-sh "sudo cp -ar /home/'${basecodeRepoName}' /home/'${projName}'"
+sh "sudo cp -ar '${basecodeRepoName}' '${projName}'"
 
-sh "cd /home/'${projName}' &&sudo git add ."
+/*sh "cd /home/'${projName}' &&sudo git add ."
 
 sh "cd /home/'${projName}' &&sudo git commit -am 'migrated'"
 
@@ -66,9 +66,14 @@ sh "cd /home/'${projName}' &&sudo git remote set-url origin git@gitlab.com:'${us
 
 
 sh "cd /home/'${projName}' &&sudo git push origin master"
+*/
 
-
-
+ sh """ cd '${projName}'
+         git checkout -b master
+         npm --no-git-tag-version version minor
+         git commit -am 'First Commit'
+         git push origin master
+      """
 
 
 
