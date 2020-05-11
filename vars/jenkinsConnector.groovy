@@ -32,32 +32,7 @@ def env = rigEnv
 	println(jenkins_job_name)
 	
 	
-	/*def output = utils.getToolDetails(rigUrl,code_quality_toolName,rigletName)
-    def new_output = output.substring(0, output.lastIndexOf("}")  + 1)       
-    def response_code_status = output.substring(output.lastIndexOf("}") +1, output.lastIndexOf("}") +4)    // for getting response code
-    if (response_code_status != "200")
-    {
-     println("Failed to reach backend url")
-    }
-    else
-    {
-     println("Successfully fetched the tool details")
-    }
-	def resultJson = readJSON text: new_output
-	String agentToken = resultJson.agentToken
-	String apiToken = resultJson.apiToken
-	/*File file = new File("node_sltoken.txt")
-	file.write(agentToken)*/
-	
-	sh "sudo rm -rf node_sltoken.txt"
-	 
-	sh "sudo echo '${agentToken}' > node_sltoken.txt"
-	
-	sh "ls -a"
-	
-	sh "pwd"
-	
-	sh "sudo cat node_sltoken.txt"*/
+
 	
 	//Fetch CI tool Details
 	output = utils.getToolDetails(rigUrl,ci_toolName,rigletName)
