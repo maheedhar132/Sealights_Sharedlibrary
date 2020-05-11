@@ -17,9 +17,9 @@ while (a < envCount)
 }
 
 String toolName=jsonObj.scm.tool.name
-String rigletName=jsonObj.riglet_info.name
+String rigletName=jsonObj.riglet_info.$name
 
-String projName=jsonObj.scm.projects.project[0].project_name
+String projName=jsonObj.scm.projects.project[0].$project_name
 String projDescription=jsonObj.scm.projects.project[0].project_description
 String projId=projName  // TEMPORARY
 boolean creation_status=jsonObj.scm.projects.project[0].create
