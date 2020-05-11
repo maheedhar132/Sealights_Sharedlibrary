@@ -56,14 +56,14 @@ sh "git clone https://'${user}':'${pass}'@gitlab.com/'${user}'/'${projUrlName}'.
 
 sh "sudo cp -ar '${basecodeRepoName}' '${projName}'"
 
-sh "cd '${projName}' && git add ."
+sh "cd '${projName}' &&sudo git add ."
 
-sh "cd '${projName}' && git commit -m 'migrated'"
+sh "cd '${projName}' &&sudo git commit -m 'migrated'"
 
-sh "cd '${projName}' && git remote set-url origin git@gitlab.com:'${user}'/'${projUrlName}'.git"
+sh "cd '${projName}' &&sudo git remote set-url origin git@gitlab.com:'${user}'/'${projUrlName}'.git"
 
 
-sh "cd '${projName}' && git push origin master"
+sh "cd '${projName}' &&sudo git push origin master"
 
 
 
