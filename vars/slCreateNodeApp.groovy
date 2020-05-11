@@ -21,10 +21,10 @@ while (a < envCount)
 String code_quality_toolName=jsonObj.code_quality.tool.name
 String rigletName=jsonObj.riglet_info.name
 
-def output = utils.getToolDetails(rigUrl,code_quality_toolName,rigletName)
-    def new_output = output.substring(0, output.lastIndexOf("}")  + 1)       
-    def response_code_status = output.substring(output.lastIndexOf("}") +1, output.lastIndexOf("}") +4)    // for getting response code
-    if (response_code_status != "200")
+def output1 = utils.getToolDetails(rigUrl,code_quality_toolName,rigletName)
+    def new_output1 = output1.substring(0, output.lastIndexOf("}")  + 1)       
+    def response_code_status1 = output1.substring(output1.lastIndexOf("}") +1, output1.lastIndexOf("}") +4)    // for getting response code
+    if (response_code_status1 != "200")
     {
      println("Failed to reach backend url")
     }
@@ -32,9 +32,9 @@ def output = utils.getToolDetails(rigUrl,code_quality_toolName,rigletName)
     {
      println("Successfully fetched the tool details")
     }
-	def resultJson = readJSON text: new_output
-	String agentToken = resultJson.agentToken
-	String apiToken = resultJson.apiToken
+	def resultJson1 = readJSON text: new_output1
+	String agentToken = resultJson1.agentToken
+	String apiToken = resultJson1.apiToken
 	/*File file = new File("node_sltoken.txt")
 	file.write(agentToken)*/
 	
