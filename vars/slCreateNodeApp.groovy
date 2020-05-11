@@ -1,4 +1,4 @@
-def call(jsondata){
+def call(jsondata,rigEnv){
 
 
 def env = rigEnv
