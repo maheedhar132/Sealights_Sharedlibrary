@@ -71,7 +71,7 @@ sh "cd /home/'${projName}' &&sudo git remote set-url origin git@gitlab.com:'${us
 sh "cd /home/'${projName}' &&sudo git push origin master"
 */
 
- sh """ cd ../'${projName}'
+ sh """ cd ../'${projUrlName}'
 		sudo git remote set-url origin git@gitlab.com:'${user}'/'${projUrlName}'.git
 		sudo git add .
         sudo git commit -am 'First Commit'
