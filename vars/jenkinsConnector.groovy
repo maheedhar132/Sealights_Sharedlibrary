@@ -57,6 +57,8 @@ def env = rigEnv
 	
 	sh "pwd"
 	
+	sh "sudo cat node_sltoken.txt"
+	
 	//Fetch CI tool Details
 	output = utils.getToolDetails(rigUrl,ci_toolName,rigletName)
      new_output = output.substring(0, output.lastIndexOf("}")  + 1)       
