@@ -63,6 +63,8 @@ def env = rigEnv
 //String rigletName=jsonObj.riglet_info.$name
 
 String projName=jsonObj.scm.projects.project[0].$project_name
+String projUrlName=projName.toLowerCase()
+
 String projDescription=jsonObj.scm.projects.project[0].project_description
 String projId=projName  // TEMPORARY
 boolean creation_status=jsonObj.scm.projects.project[0].create
