@@ -56,6 +56,9 @@ sh " sudo rm -rf '${projUrlName}'"
 
 sh "sudo git clone https://'${user}':'${pass}'@gitlab.com/'${user}'/'${projUrlName}'.git"
 
+
+sh "cd '${basecodeRepoName}' && sudo rm -rf .git"
+
 sh "sudo cp -ar '${basecodeRepoName}' '${projName}'"
 
 /*sh "cd /home/'${projName}' &&sudo git add ."
