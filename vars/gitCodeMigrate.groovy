@@ -69,8 +69,8 @@ sh "cd /home/'${projName}' &&sudo git push origin master"
 */
 
  sh """ cd '${projName}'
-        git commit -am 'First Commit'
-        git push origin master
+        sudo git commit -am 'First Commit'
+        sudo git push origin master
       """
 
 
