@@ -73,7 +73,7 @@ def env = rigEnv
     def git_branch_name = "master"
 	def cred = "maheedhar"
     def pipeline_template = WORKSPACE + "/vars/slNodeTemplete.groovy"
-    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'mahi-github', url: 'https://github.com/maheedhar132/Sealights_Sharedlibrary.git']]])
+    //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'mahi-github', url: 'https://github.com/maheedhar132/Sealights_Sharedlibrary.git']]])
 	
 	
 	
