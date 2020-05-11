@@ -53,7 +53,55 @@ def env = rigEnv
 	 println(jenkins_pass)
      String jenkins_url = result.url
 	
-	def git_scm_url = "https://github.com/maheedhar132/Game.git"
+	
+	
+	
+	
+	//GIT SCM TOOL Details
+	
+	String scm_toolName=jsonObj.scm.tool.name
+String rigletName=jsonObj.riglet_info.name
+
+String projName=jsonObj.scm.projects.project[0].project_name
+String projDescription=jsonObj.scm.projects.project[0].project_description
+String projId=projName  // TEMPORARY
+boolean creation_status=jsonObj.scm.projects.project[0].create
+
+
+def output_scm = utils.getToolDetails(rigUrl,scm_toolName,rigletName)
+def new_output_scm = output_scm.substring(0, output_scm.lastIndexOf("}")  + 1)       
+def response_code_status_scm = output1.substring(output_scm.lastIndexOf("}") +1, output_scm.lastIndexOf("}") +4)    // for getting response code
+if (response_code_status_scm != "200")
+  {
+      println("Failed to reach backend url")
+  }
+  else
+  {
+      println("Successfully fetched the tool details")
+  }// function for getting tool details
+def resultJson_scm = readJSON text: new_output_scm
+String user = resultJson_scm.userName
+String pass = resultJson_scm.password
+String url = resultJson_scm.url
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	def git_scm_url = "https://'${user}':'${pass}'@gitlab.com/'${user}'/'${projUrlName}'.git"
+	
+	println(git_scm_url)
+	
     def git_branch_name = "master"
 	def cred = "maheedhar"
     def pipeline_template = WORKSPACE + "/vars/slNodeTemplete.groovy"
