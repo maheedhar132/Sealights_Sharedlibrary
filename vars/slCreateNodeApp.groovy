@@ -85,7 +85,7 @@ sh "cd '${projUrlName}' && sudo npm i slnodejs"
 
 sh "cd '${projUrlName}'/client && sudo npm i slnodejs"
 		
-sh "./'${projUrlName}'/node_modules/.bin/slnodejs config --tokenfile /var/lib/jenkins/workspace/${JOB_NAME}/node_sltoken.txt --appname '${projName}' --branch 'master' --build '2'"
+sh "./'${projUrlName}'/node_modules/.bin/slnodejs config --tokenfile /var/lib/jenkins/workspace/${JOB_NAME}/node_sltoken.txt --appname '${projName}' --branch 'master' --build '0'"
 
 sh "export SL_BUILD_SESSION_ID=`cat buildSessionId`"
 
