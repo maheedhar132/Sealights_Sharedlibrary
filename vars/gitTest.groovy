@@ -47,7 +47,7 @@ String pass = resultJson.password
 String url = resultJson.url
 
 
-sh ""curl -v --user '${user}':'${pass}' -H "ContentType: application/json; charset=UTF-8" '${url}'/api/v4/projects""
+sh "curl -v --user '${user}':'${pass}' -H 'ContentType: application/json; charset=UTF-8' '${url}'/api/v4/projects"
 
 
 
