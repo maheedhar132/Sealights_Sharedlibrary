@@ -49,16 +49,6 @@ String url = resultJson.url
 
 sh "curl -v --user '${user}':'${pass}' -H "ContentType: application/json; charset=UTF-8" '${url}'/api/v4/projects"
 
-
-
-
-/*projectList(pass,url)        // function for fetching list of projects
-def projectJson = readJSON file: 'projectList.json'
-
-int projectNumber = projectJson.size()
-int i = 0;
-boolean nameExists = false;
-String projCopy = projName*/
  
 if( creation_status == true)         // if project needs to be created
 {
@@ -94,17 +84,17 @@ if( creation_status == true)         // if project needs to be created
 		println ("Creating a Project with "+projName+" instead ;-)")
 		
 		    sh  """ curl -w '%{http_code}' -o response.txt -X POST \
-    '${url}api/v4/projects?private_token=${pass}' \
-    -H 'content-type: application/json' \
-    -d '{
-                "name": "${projName}",
-                  "description": "${projDescription}",
-                  "homepage": "https://gitlab.com",
-                  "private": true,
-                  "has_issues": true,
-                  "has_projects": true,
-                  "has_wiki": true
-                }' > response_code.txt
+				'${url}api/v4/projects?private_token=${pass}' \
+					-H 'content-type: application/json' \
+				-d '{
+					"name": "${projName}",
+					"description": "${projDescription}",
+					"homepage": "https://gitlab.com",
+					"private": true,
+					"has_issues": true,
+					"has_projects": true,
+					"has_wiki": true
+					}' > response_code.txt
                 """
      def response_code = readFile file: 'response_code.txt'
  
@@ -115,33 +105,11 @@ if( creation_status == true)         // if project needs to be created
 
       }
 	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
+	 writeFile file: 'gitlab_project_name.txt', text: projName
+ 	 String projUrl= url+user+ "/"+projName.toLowerCase() + ".git"
+	 utils.saveToolProjectInfo(rigUrl,rigletName,toolName,projId,projName,projUrl)
 
-
-
-
-
-
-
-
-writeFile file: 'gitlab_project_name.txt', text: projName
-String projUrl= url+user+ "/"+projName.toLowerCase() + ".git"
-
-utils.saveToolProjectInfo(rigUrl,rigletName,toolName,projId,projName,projUrl)
-
-}
+	}
 }
 
  
