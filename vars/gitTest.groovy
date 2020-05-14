@@ -77,7 +77,7 @@ if( creation_status == true)         // if project needs to be created
 
       }
  
- 
+	 String projCopy = projName
 	  while(response_code!=201){
 	    sh "rm -rf response_code.txt"
 		println("With name "+projName+" already Exists..!!");
