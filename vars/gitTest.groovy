@@ -77,8 +77,8 @@ if( creation_status == true)         // if project needs to be created
 
       }
  
-	 String projCopy = projName
-	  while(response_code!=201){
+	 String projCopy = projName	
+	  /*while(response_code!=201){
 	    sh "rm -rf response_code.txt"
 		println("With name "+projName+" already Exists..!!");
 		projName = projName+'_'+projCopy
@@ -105,12 +105,12 @@ if( creation_status == true)         // if project needs to be created
       // utils.statusChange(rigUrl,rigletName,toolName,"Project creation","success")
 
       }
-	  
+	  }*/
 	 writeFile file: 'gitlab_project_name.txt', text: projName
  	 String projUrl= url+user+ "/"+projName.toLowerCase() + ".git"
 	 utils.saveToolProjectInfo(rigUrl,rigletName,toolName,projId,projName,projUrl)
 
-	}
+	
 }
 
 } 
