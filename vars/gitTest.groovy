@@ -79,7 +79,7 @@ if( creation_status == true)         // if project needs to be created
  
 	 String projCopy = projName	
 	 def i=1
-	  while(response_code!=201 ){
+	  while(response_code != "201" ){
 		i++
 	    sh "rm -rf response_code.txt"
 		println("With name "+projName+" already Exists..!!");
