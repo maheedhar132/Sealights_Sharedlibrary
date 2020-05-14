@@ -99,9 +99,4 @@ sh "cd '${projUrlName}'/client && sudo npm run build"
 sh "cd '${projUrlName}'/client && sudo ./node_modules/.bin/slnodejs build --tokenfile /var/lib/jenkins/workspace/${JOB_NAME}/node_sltoken.txt --buildsessionidfile /var/lib/jenkins/workspace/${JOB_NAME}/buildSessionId --instrumentForBrowsers  --workspacepath build --outputpath sl_build --scm none"
 
 
-
-
-
-
-
 }

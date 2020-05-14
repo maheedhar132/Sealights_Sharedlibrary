@@ -47,7 +47,7 @@ String pass = resultJson.password
 String url = resultJson.url
 
 
-sh "curl -v --user '${user}':'${pass}' -H 'ContentType: application/json; charset=UTF-8' '${url}'/api/v4/projects"
+sh "curl -v --user '${user}':'${pass}' -H "ContentType: application/json; charset=UTF-8" '${url}'/api/v4/projects"
 
 
 
@@ -80,20 +80,55 @@ if( creation_status == true)         // if project needs to be created
                 """
      def response_code = readFile file: 'response_code.txt'
  
-     if( response_code == "201" || response_code == "200")
+		 if( response_code == "201" || response_code == "200")
      {
        println(" Project creation success");
       // utils.statusChange(rigUrl,rigletName,toolName,"Project creation","success")
 
       }
-     else
-      {
-     println(" Project creation failure");
-    // utils.statusChange(rigUrl,rigletName,toolName,"Project creation","failure")
-    
-      }
+ 
+ 
+	  while(response_code!=201 || response_code!=201){
+		println("With name "+projName+" already Exists..!!");
+		projName = projName+'_'+projCopy
+		println ("Creating a Project with "+projName+" instead ;-)")
+		
+		    sh  """ curl -w '%{http_code}' -o response.txt -X POST \
+    '${url}api/v4/projects?private_token=${pass}' \
+    -H 'content-type: application/json' \
+    -d '{
+                "name": "${projName}",
+                  "description": "${projDescription}",
+                  "homepage": "https://gitlab.com",
+                  "private": true,
+                  "has_issues": true,
+                  "has_projects": true,
+                  "has_wiki": true
+                }' > response_code.txt
+                """
+     def response_code = readFile file: 'response_code.txt'
+ 
+		 if( response_code == "201" || response_code == "200")
+     {
+       println(" Project creation success");
+      // utils.statusChange(rigUrl,rigletName,toolName,"Project creation","success")
 
-}
+      }
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+
 
 
 
@@ -107,4 +142,6 @@ String projUrl= url+user+ "/"+projName.toLowerCase() + ".git"
 utils.saveToolProjectInfo(rigUrl,rigletName,toolName,projId,projName,projUrl)
 
 }
+}
+
  
