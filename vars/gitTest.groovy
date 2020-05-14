@@ -78,7 +78,8 @@ if( creation_status == true)         // if project needs to be created
       }
  
  
-	  while(response_code!=201 || response_code!=201){
+	  while(response_code!=201){
+	    sh "rm -rf response_code.txt"
 		println("With name "+projName+" already Exists..!!");
 		projName = projName+'_'+projCopy
 		println ("Creating a Project with "+projName+" instead ;-)")
@@ -96,7 +97,7 @@ if( creation_status == true)         // if project needs to be created
 					"has_wiki": true
 					}' > response_code.txt
                 """
-     def response_code = readFile file: 'response_code.txt'
+          response_code = readFile file: 'response_code.txt'
  
 		 if( response_code == "201" || response_code == "200")
      {
