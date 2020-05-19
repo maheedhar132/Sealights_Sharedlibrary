@@ -15,7 +15,7 @@ createBranch(gitlab_url,gitlab_user,projName,branchName,api_token)
 {
     sh """
  curl  -w '%{http_code}' -o response.txt -X POST \
-  '${gitlab_url}api/v4/projects/${gitlab_user}%2F${projName}/repository/branches?branch=${branchName}&ref=master' \
+  '${gitlab_url}api/v4/projects/${gitlab_user}%2F${projCopy}/repository/branches?branch=${branchName}&ref=master' \
   -H 'content-type: application/json' \
   -H 'private-token: ${api_token}' > response_code.txt
   """
