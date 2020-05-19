@@ -11,7 +11,6 @@ fetchBranchlist(gitlab_url,gitlab_user,projName,api_token)
     """
 }
 
-@NonCPS
 createBranch(gitlab_url,gitlab_user,projName,branchName,api_token)
 {
     sh """
