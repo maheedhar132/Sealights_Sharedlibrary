@@ -6,9 +6,10 @@ fetchBranchlist(gitlab_url,gitlab_user,projName,api_token)
 	String	projCopy=projName.replace("\n","")
 	String url=gitlab_url+'/api/v4/projects/'+gitlab_user+'%2F'+projCopy+'/repository/branches?private_token='+api_token
     println(url)
+	sh "rm -rf branchList.json"
 	sh """
- curl --location --request GET '${url}' \
---header 'Cookie: __cfduid=d7f8332687f0370746a7e41444bba368c1589182159'
+ curl --location --request -o branchList.json GET '${url}' \
+--header 'Cookie: __cfduid=d7f8332687f0370746a7e41444bba368c1589182159' > branchList.json
     """
 }
 
