@@ -6,7 +6,8 @@ fetchBranchlist(gitlab_url,gitlab_user,projName,api_token)
 	String	projCopy=projName.replace("\n","")
 	String url=gitlab_url+'/api/v4/projects/'+gitlab_user+'%2F'+projCopy+'/repository/branches?private_token='+api_token
     println(url)
-	sh "rm -rf branchList.json"
+	//sh "rm -rf branchList.json"
+	//sh "sudo touch branchList.json"
 	sh "curl -X GET '${url}' --output branchList.json"
 }
 
