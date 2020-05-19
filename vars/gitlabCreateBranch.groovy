@@ -10,7 +10,7 @@ fetchBranchlist(gitlab_url,gitlab_user,projName,api_token)
 	//sh "sudo touch branchList.json"
 	sh "curl --location --request GET '${url}' > branchList.json"
 }
-
+@NonCPS
 createBranch(gitlab_url,gitlab_user,projName,branchName,api_token)
 {
     sh """
