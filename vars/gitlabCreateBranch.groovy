@@ -5,10 +5,9 @@ fetchBranchlist(gitlab_url,gitlab_user,projName,api_token)
 {
     sh """
  curl -X GET \
-  ${gitlab_url}api/v4/projects/${gitlab_user}%2F${projName}/repository/branches \
+  ${gitlab_url}api/v4/projects/${gitlab_user}%2F${projName}/repository/branches?private_token=${api_token} \
   -H 'cache-control: no-cache' \
   -H 'content-type: application/json' \
-  -H 'private-token: ${api_token}' -o branchList.json
     """
 }
 
