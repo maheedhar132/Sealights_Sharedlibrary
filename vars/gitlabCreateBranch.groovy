@@ -8,7 +8,7 @@ fetchBranchlist(gitlab_url,gitlab_user,projName,api_token)
     println(url)
 	//sh "rm -rf branchList.json"
 	//sh "sudo touch branchList.json"
-	sh "curl -X GET '${url}' --output branchList.json"
+	sh "curl --location --request GET '${url}' > branchList.json"
 }
 
 createBranch(gitlab_url,gitlab_user,projName,branchName,api_token)
