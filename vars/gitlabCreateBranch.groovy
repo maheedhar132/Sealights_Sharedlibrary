@@ -13,6 +13,7 @@ fetchBranchlist(gitlab_url,gitlab_user,projName,api_token)
 @NonCPS
 createBranch(gitlab_url,gitlab_user,projName,branchName,api_token)
 {
+	projCopy=projName.replace("\n","")
     sh """
  curl  -w '%{http_code}' -o response.txt -X POST \
   '${gitlab_url}api/v4/projects/${gitlab_user}%2F${projCopy}/repository/branches?branch=${branchName}&ref=master' \
