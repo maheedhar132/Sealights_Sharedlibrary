@@ -114,6 +114,8 @@ if( creation_status == true)         // if project needs to be created
 	 writeFile file: 'gitlab_project_name.txt', text: projName
  	 String projUrl= url+user+ "/"+projName.toLowerCase() + ".git"
 	 utils.saveToolProjectInfo(rigUrl,rigletName,toolName,projId,projName,projUrl)
+	 sh "rm -rf gitlab_project_name.txt"
+	 sh "echo ${projName} > gitlab_project_name.txt"
 
 	
 }
