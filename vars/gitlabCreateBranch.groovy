@@ -104,13 +104,13 @@ while(i<branchCount) {
        {
          createBranch(gitlab_url,gitlab_user,projName,branchName,api_token)
          response_code = readFile file: 'response_code.txt'
-         if ( response_code == "201" || response_code == "200")
+         /*if ( response_code == "201" || response_code == "200")
           {
             utils.statusChange(rigUrl,rigletName,toolName,"Branch creation","success")
           }
         else {
         utils.statusChange(rigUrl,rigletName,toolName,"Branch creation","failure")
-        }
+        }*/
       }
     }
     i++;
