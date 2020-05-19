@@ -9,7 +9,7 @@ fetchBranchlist(gitlab_url,gitlab_user,projName,api_token)
 	sh "rm -rf branchList.json"
 	sh """
  curl --location --request GET '${url}' \
---header 'Cookie: __cfduid=d7f8332687f0370746a7e41444bba368c1589182159' -o branchList.json
+ -o branchList.json
     """
 }
 
