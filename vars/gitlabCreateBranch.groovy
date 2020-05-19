@@ -49,9 +49,9 @@ String projname = readFile('gitlab_project_name.txt')
 println(projname)
 String projName=projname.toLowerCase()
 //def projName = gitlabcreaterepo.projectInfo()   // the project which is created
-String branchName=jsonObj.scm.projects.project[0].repositories.repository[0].branches.branch[0].name
-boolean creation_status= jsonObj.scm.projects.project[0].repositories.repository[0].branches.branch[0].create
-int branchCount= jsonObj.scm.projects.project[0].repositories.repository[0].branches.branch.size()
+String branchName=jsonObj.scm.projects.project[0].branches.branch[0].name
+boolean creation_status= jsonObj.scm.projects.project[0].branches.branch[0].create
+int branchCount= jsonObj.scm.projects.project[0].branches.branch.size()
 
 
 def output = utils.getToolDetails(rigUrl,toolName,rigletName)
@@ -88,7 +88,7 @@ println(number);
 int i = 0;
 def response_code
 while(i<branchCount) {
-   branchName=jsonObj.scm.projects.project[0].repositories.repository[0].branches.branch[i].name
+   branchName=jsonObj.scm.projects.project[0].branches.branch[i].name
    println(branchName);
    while( j < number )
      {
