@@ -4,10 +4,8 @@ import groovy.json.*
 fetchBranchlist(gitlab_url,gitlab_user,projName,api_token)
 {
     sh """
- curl -X GET \
-  ${gitlab_url}api/v4/projects/${gitlab_user}%2F${projName}/repository/branches?private_token=${api_token} \
-  -H 'cache-control: no-cache' \
-  -H 'content-type: application/json' \
+ curl --location --request GET '${gitlab_url}/api/v4/projects/${gitlab_user}%2F${projName}/repository/branches?private_token=${api_token}' \
+--header 'Cookie: __cfduid=d7f8332687f0370746a7e41444bba368c1589182159'
     """
 }
 
