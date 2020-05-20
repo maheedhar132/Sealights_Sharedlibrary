@@ -1,5 +1,6 @@
 @NonCPS
 generateFunctionizeToken(apiKey,apiSec,roleName){
+String apiKey_new = apiKey.replace("\n","")
 sh """
 curl --location --request POST https://app.virtualautomationengineer.com/partnerapi/account/generatetoken?apiKey='${apiKey}'&apiSecret='${apiSec}'&role='${roleName}' -o funOutput.json
 """
