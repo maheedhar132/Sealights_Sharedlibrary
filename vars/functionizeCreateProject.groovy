@@ -9,7 +9,7 @@ curl --location --request POST '${url}' -o funOutput.json
 
 }
 @NonCPS
-generateSessionToken(funToken,userId,siteUrl){
+generatesessionToken(funToken,userId,siteUrl){
 funToken = funToken.replace("\n","")
 userId = userId.replace("\n","")
 gst_url = siteUrl+'/partnerapi/user/login?functionizeToken='+funToken+'&functionizeUserIdentifier='+userId
@@ -22,7 +22,7 @@ curl --location --request POST '${gst_url}' -o userSession.json
 createProject(projName,appUrl,sessionToken,siteUrl){
  projName = projName.replace("\n","")
  appUrl = appUrl.replace("\n","")
- String cp_url = siteUrl+'/partnerapi/project/add?projectName='+projName+'&projectUrl='+appUrl+'&userSessionToken='+SessionToken
+ String cp_url = siteUrl+'/partnerapi/project/add?projectName='+projName+'&projectUrl='+appUrl+'&usersessionToken='+sessionToken
 sh """
 curl --location --request POST 'cp_url'
 """
@@ -84,10 +84,10 @@ generateFunctionizeToken(apiKey,apiSec,roleName,siteUrl)
 
 
 
-generateSessionToken(funToken,userId,siteUrl)
+generatesessionToken(funToken,userId,siteUrl)
 
 	//Read sessionToken
 	def user = readJSON file: 'userSession.json'
-	def sessionToken = user.responseData.userSessionToken
+	def sessionToken = user.responseData.usersessionToken
 createProject(projName,appUrl,sessionToken,siteUrl)
 }
