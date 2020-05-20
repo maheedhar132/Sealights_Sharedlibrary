@@ -9,9 +9,8 @@ curl --location --request POST '${url}' -o funOutput.json
 
 }
 @NonCPS
-generateSessionToken(userId){
-def var = readJSON file: 'funOutput.json' 
-def funToken = var.responseData.functionizeToken
+generateSessionToken(funToken,userId){
+
 sh"""
 curl --location --request POST https://app.virtualautomationengineer.com/partnerapi/user/login?functionizeToken='${funToken}'&functionizeUserIdentifier='${userId} -o userSession.json'
 """
@@ -19,10 +18,6 @@ curl --location --request POST https://app.virtualautomationengineer.com/partner
 
 @NonCPS
 createProject(projName,appUrl){
-def user = readJSON file: 'userSession.json'
-def SessionToken = user.responseData.userSessionToken
-
-
 sh """
 curl --location --request GET https://app.virtualautomationengineer.com/partnerapi/project/add?projectName='${projName}'&projectUrl='${appUrl}'&userSessionToken='${SessionToken}'
 """
@@ -78,8 +73,16 @@ String userId= resultJson.functionizeUserIdentifier
 
 generateFunctionizeToken(apiKey,apiSec,roleName,siteUrl)
 
-generateSessionToken(userId)
+	//Read token from the file
+	def var = readJSON file: 'funOutput.json' 
+	def funToken = var.responseData.functionizeToken
 
 
-createProject(projName,appUrl)
+
+generateSessionToken(userId,funToken)
+
+	//Read sessionToken
+	def user = readJSON file: 'userSession.json'
+	def SessionToken = user.responseData.userSessionToken
+createProject(projName,appUrl,sessionToken)
 }
