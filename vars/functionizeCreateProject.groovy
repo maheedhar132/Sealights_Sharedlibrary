@@ -17,6 +17,23 @@ curl --location --request POST https://app.virtualautomationengineer.com/partner
 """
 }
 
+@NonCPS
+createProject(projName,appUrl){
+def user = readJSON file: 'userSession.json'
+def SessionToken = user.responseData.userSessionToken
+
+
+sh """
+curl --location --request GET https://app.virtualautomationengineer.com/partnerapi/project/add?projectName='${projName}'&projectUrl='${appUrl}'&userSessionToken='${SessionToken}'
+"""
+}
+
+
+
+
+
+
+
 def call(jsondata,rigEnv){
 def env = rigEnv
 def jsonString = jsondata
@@ -38,6 +55,7 @@ def testing_toolName= jsonObj.ct.tool.name
 def rigletName = jsonObj.riglet_info.$name
 //String roleName = jsonObj.ct.projects.project.role
 String projName = jsonObj.ct.projects.project.$project_name
+String appUrl = jsonObj.ct.projects.project.$application_url
 
 def output = utils.getToolDetails(rigUrl,testing_toolName,rigletName)
 def new_output = output.substring(0, output.lastIndexOf("}")  + 1)       
@@ -63,12 +81,5 @@ generateFunctionizeToken(apiKey,apiSec,roleName,siteUrl)
 generateSessionToken(userId)
 
 
-def user = readJSON file: 'userSession.json'
-def SessionToken = user.responseData.userSessionToken
-
-
-sh """
-curl --location --request GET https://app.virtualautomationengineer.com/partnerapi/project/add?projectName='${projName}'&projectUrl='${toolUrl}'&userSessionToken='${SessionToken}'
-"""
-
+createProject(projName,appUrl)
 }
