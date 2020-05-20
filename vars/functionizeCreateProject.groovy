@@ -10,9 +10,9 @@ curl --location --request POST '${url}' -o funOutput.json
 }
 @NonCPS
 generateSessionToken(funToken,userId,siteUrl){
-String funToken = funToken.replace("\n","")
-String userId = userId.replace("\n","")
-String gst_url = siteUrl+'/partnerapi/user/login?functionizeToken='+funToken+'functionizeUserIdentifier='+userId
+funToken = funToken.replace("\n","")
+userId = userId.replace("\n","")
+gst_url = siteUrl+'/partnerapi/user/login?functionizeToken='+funToken+'functionizeUserIdentifier='+userId
 sh"""
 curl --location --request '${gst_url}' -o userSession.json
 """
