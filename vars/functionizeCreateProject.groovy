@@ -57,7 +57,7 @@ String apiSec = resultJson.apiSecret
 String roleName = resultJson.role
 String siteUrl = resultJson.url
 
-generateFunctionizeToken(apiKey,apiSec,roleName)
+generateFunctionizeToken(apiKey,apiSec,roleName,siteUrl)
 
 generateSessionToken(userId)
 
