@@ -56,7 +56,7 @@ String apiKey = resultJson.apiKey
 String apiSec = resultJson.apiSecret
 String roleName = resultJson.role
 String siteUrl = resultJson.url
-String userId= resultJson.userId
+String userId= resultJson.functionizeUserIdentifier
 
 generateFunctionizeToken(apiKey,apiSec,roleName,siteUrl)
 
