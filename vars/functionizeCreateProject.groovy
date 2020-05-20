@@ -1,8 +1,10 @@
 @NonCPS
-generateFunctionizeToken(apiKey,apiSec,roleName){
+generateFunctionizeToken(apiKey,apiSec,roleName,siteUrl){
 String apiKey_new = apiKey.replace("\n","")
+String apiSec_new = apiSec.replace("\n","")
+String url = siteUrl+'/partnerapi/account/generatetoken?apiKey='+apiKey_new+'&apiSecret='+apiSec_new+'&role='+roleName
 sh """
-curl --location --request POST https://app.virtualautomationengineer.com/partnerapi/account/generatetoken?apiKey='${apiKey}'&apiSecret='${apiSec}'&role='${roleName}' -o funOutput.json
+curl --location --request POST '${url}' -o funOutput.json
 """
 
 }
@@ -53,7 +55,7 @@ println(resultJson)
 String apiKey = resultJson.apiKey
 String apiSec = resultJson.apiSecret
 String roleName = resultJson.role
-String userId = resultJson.userId
+String siteUrl = resultJson.url
 
 generateFunctionizeToken(apiKey,apiSec,roleName)
 
