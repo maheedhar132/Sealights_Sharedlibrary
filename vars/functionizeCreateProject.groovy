@@ -25,7 +25,7 @@ createProject(siteUrl,projName,appUrl,sessionToken){
  sessionToken=sessionToken.replace("\n","").replace(" ","")
  String cp_url = siteUrl+'partnerapi/project/add?projectName='+projName+'&projectUrl='+appUrl+'&userSessionToken='+sessionToken
 sh """
-curl --location --request POST '${cp_url}'
+curl --location --request POST '${cp_url}' -o creationStatus.json
 """
 }
 
@@ -92,4 +92,27 @@ generatesessionToken(funToken,userId,siteUrl)
 	String sessionToken = user.responseData.userSessionToken
 	println(sessionToken)
 createProject(siteUrl,projName,appUrl,sessionToken)
+
+
+  //Validator
+  def projCopy = projName
+  def statusObj = readJSON file: 'creationStatus.json'
+  String status = statusObj.status
+	while( status == "ERROR"){
+	sh "cat /dev/null > creationStatus.json"
+	projName = projName + projCopy
+	createProject(siteUrl,projName,appUrl,sessionToken)
+	statusObj = readJSON file: 'creationStatus.json'
+	status = statusObj.status
+	if(status == "SUCCESS"){
+		break
+		}
+	}
+  
+
+
+
+
+
+
 }
