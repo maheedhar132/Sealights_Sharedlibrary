@@ -100,7 +100,7 @@ createProject(siteUrl,projName,appUrl,sessionToken)
   String status = statusObj.status
 	while( status == "ERROR"){
 	sh "cat /dev/null > creationStatus.json"
-	projName = projName + projCopy
+	projName = projName +'_'+ projCopy
 	createProject(siteUrl,projName,appUrl,sessionToken)
 	statusObj = readJSON file: 'creationStatus.json'
 	status = statusObj.status
