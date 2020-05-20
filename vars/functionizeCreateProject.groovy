@@ -12,9 +12,9 @@ curl --location --request POST '${url}' -o funOutput.json
 generateSessionToken(funToken,userId,siteUrl){
 funToken = funToken.replace("\n","")
 userId = userId.replace("\n","")
-gst_url = siteUrl+'/partnerapi/user/login?functionizeToken='+funToken+'functionizeUserIdentifier='+userId
+gst_url = siteUrl+'/partnerapi/user/login?functionizeToken='+funToken+'&functionizeUserIdentifier='+userId
 sh"""
-curl --location --request '${gst_url}' -o userSession.json
+curl --location --request POST '${gst_url}' -o userSession.json
 """
 }
 
