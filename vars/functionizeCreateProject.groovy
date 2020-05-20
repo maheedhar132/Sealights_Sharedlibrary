@@ -23,7 +23,7 @@ createProject(siteUrl,projName,appUrl,sessionToken){
  projName = projName.replace("\n","").replace("]","").replace("[","")
  appUrl = appUrl.replace("\n","").replace("]","").replace("[","")
  sessionToken=sessionToken.replace("\n","")
- String cp_url = siteUrl+'/partnerapi/project/add?projectName='+projName+'&projectUrl='+appUrl+'&usersessionToken='+sessionToken
+ String cp_url = siteUrl+'partnerapi/project/add?projectName='+projName+'&projectUrl='+appUrl+'&userSessionToken='+sessionToken
 sh """
 curl --location --request POST '${cp_url}'
 """
