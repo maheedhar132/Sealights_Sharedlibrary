@@ -19,7 +19,7 @@ curl --location --request POST '${gst_url}' -o userSession.json
 }
 
 @NonCPS
-createProject(projName,appUrl){
+createProject(projName,appUrl,sessionToken){
  projName = projName.replace("\n","")
  appUrl = appUrl.replace("\n","")
  String cp_url = siteUrl+'/partnerapi/project/add?projectName='+projName+'&projectUrl='+appUrl+'&userSessionToken='+SessionToken
@@ -88,6 +88,6 @@ generateSessionToken(funToken,userId,siteUrl)
 
 	//Read sessionToken
 	def user = readJSON file: 'userSession.json'
-	def SessionToken = user.responseData.userSessionToken
+	def sessionToken = user.responseData.userSessionToken
 createProject(projName,appUrl,sessionToken)
 }
