@@ -48,9 +48,11 @@ if (response_code_status != "200")
       println("Successfully fetched the tool details")
   }
 def resultJson = readJSON text: new_output
+println(resultJson)
 String apiKey = resultJson.apiKey
 String apiSec = resultJson.apiSecret
-
+String roleName = resultJson.role
+String userId = resultJson.userId
 
 generateFunctionizeToken(apiKey,apiSec,roleName)
 
