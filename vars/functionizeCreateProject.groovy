@@ -90,7 +90,7 @@ generatesessionToken(funToken,userId,siteUrl)
 	//Read sessionToken
 	def user = readJSON file: 'userSession.json'
 	String sessionToken = user.responseData.userSessionToken
-	sessionToken = sessionToken+'a'
+	
 	println(sessionToken)
 createProject(siteUrl,projName,appUrl,sessionToken)
 
