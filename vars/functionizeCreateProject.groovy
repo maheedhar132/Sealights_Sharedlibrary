@@ -16,7 +16,6 @@ gst_url = siteUrl+'/partnerapi/user/login?functionizeToken='+funToken+'&function
 sh"""
 curl --location --request POST '${gst_url}' -o userSession.json
 """
-sh "echo a > userSession.json"
 }
 
 @NonCPS
@@ -91,6 +90,7 @@ generatesessionToken(funToken,userId,siteUrl)
 	//Read sessionToken
 	def user = readJSON file: 'userSession.json'
 	String sessionToken = user.responseData.userSessionToken
+	sessionToken = sessionToken+'a'
 	println(sessionToken)
 createProject(siteUrl,projName,appUrl,sessionToken)
 
