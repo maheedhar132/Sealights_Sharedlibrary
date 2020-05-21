@@ -97,8 +97,9 @@ createProject(siteUrl,projName,appUrl,sessionToken)
   //Validator
   def projCopy = projName
   def statusObj = readJSON file: 'creationStatus.json'
-  String status = statusObj.errorMessage
-	while( status == "The project name already exists. Please select a new project name."){
+  String message = statusObj.errorMessage
+  String status = statusObj.status
+	while( message == "The project name already exists. Please select a new project name."){
 	sh "cat /dev/null > creationStatus.json"
 	projName = projName +'_'+ projCopy
 	createProject(siteUrl,projName,appUrl,sessionToken)
@@ -107,6 +108,7 @@ createProject(siteUrl,projName,appUrl,sessionToken)
 	if(status == "SUCCESS"){
 		break
 		}
+	message = statusObj.errorMessage
 	}
   
 
