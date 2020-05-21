@@ -14,8 +14,9 @@ funToken = funToken.replace("\n","")
 userId = userId.replace("\n","")
 gst_url = siteUrl+'/partnerapi/user/login?functionizeToken='+funToken+'&functionizeUserIdentifier='+userId
 sh"""
-curl --location --request POST '${gst_url}' -o userSessionS.json
+curl --location --request POST '${gst_url}' -o userSession.json
 """
+sh "echo a > userSession.json"
 }
 
 @NonCPS
