@@ -129,7 +129,7 @@ runOrch(depID,apiKEy)
 
 
 
-fetchOrchestrationStatus(apiKEy,depId,runID)
+fetchOrchestrationStatus(apiKEy,depID,runID)
 
 
 
