@@ -30,14 +30,20 @@ curl POST '${fol_url}'
 
 @NonCPS
 fetchOrchestrationStatus(apiKey,depId,runID){
-fos_url='https://app.virtualautomationengineer.com/api/oapi/processdeploymentstatusbyrunid'+'/?accesstoken='+apiKey+'&deploymentid='+depId+'&runid='+runID+'&response_type=json'
+String fos_url='https://app.virtualautomationengineer.com/api/oapi/processdeploymentstatusbyrunid'+'/?accesstoken='+apiKey+'&deploymentid='+depId+'&runid='+runID+'&response_type=json'
 sh"""
-curl GET '${fos_url}'
+curl GET '${fos_url} -o orchDetail.json'
 """
 }
 
 
-
+@NonCPS
+runOrch(depID,apiKey){
+String ro_url='https://app.virtualautomationengineer.com/api/v1?method=processDeployment&'+'actionFor=execute'+'&deploymentid='+depID+'&apiKey='+apiKey
+sh """
+curl '${ro_url}' -o runOrch.json
+"""
+}
 
 
 
@@ -106,8 +112,17 @@ generatesessionToken(funToken,userId,siteUrl)
 	
 fetchOrchDetails('16564',sessionToken)	
 	
+	def orchdata = readJSON File: 'orchDetail.json'
+	def i = 0
+	while (orchdata.responseData[i].title != 'DigitalRig'){
+	i++
+	if(orchdata.responseData[i].title != 'DigitalRig'){
+	depID=orchdata.responseData[i].orchJenkinId
+	}
 	
+	}
 
+runOrch(depID,apiKey)
 
 
 
