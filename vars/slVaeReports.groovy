@@ -23,7 +23,7 @@ curl --location --request POST '${gst_url}' -o userSession.json
 fetchOrchDetails(projID,sessionToken){
 String fol_url =  'https://app.virtualautomationengineer.com/partnerapi/orchestration/list?projectId='+projID+'&env=live&userSessionToken='+sessionToken
 sh """
-curl POST '${fol_url}'
+curl '${fol_url}' -o orchDetail.json
 """
 }
 
@@ -32,7 +32,7 @@ curl POST '${fol_url}'
 fetchOrchestrationStatus(apiKey,depId,runID){
 String fos_url='https://app.virtualautomationengineer.com/api/oapi/processdeploymentstatusbyrunid'+'/?accesstoken='+apiKey+'&deploymentid='+depId+'&runid='+runID+'&response_type=json'
 sh"""
-curl '${fos_url}' -o orchDetail.json
+curl '${fos_url}' -o orchStatus.json
 """
 }
 
