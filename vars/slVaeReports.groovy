@@ -32,7 +32,7 @@ curl POST '${fol_url}'
 fetchOrchestrationStatus(apiKey,depId,runID){
 String fos_url='https://app.virtualautomationengineer.com/api/oapi/processdeploymentstatusbyrunid'+'/?accesstoken='+apiKey+'&deploymentid='+depId+'&runid='+runID+'&response_type=json'
 sh"""
-curl GET '${fos_url}' -o orchDetail.json
+curl '${fos_url}' -o orchDetail.json
 """
 }
 
