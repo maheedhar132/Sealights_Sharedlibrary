@@ -115,6 +115,7 @@ fetchOrchDetails('16564',sessionToken)
 	def orchdata = readJSON file: 'orchDetail.json'
 	def i = 0
 	String depID=''
+	String runID=''
 	while (orchdata.responseData[i].title != 'DigitalRig'){
 	i++
 	if(orchdata.responseData[i].title != 'DigitalRig'){
