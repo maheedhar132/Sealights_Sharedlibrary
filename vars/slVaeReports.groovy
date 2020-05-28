@@ -112,7 +112,7 @@ generatesessionToken(funToken,userId,siteUrl)
 	
 fetchOrchDetails('16564',sessionToken)	
 	
-	def orchdata = readJSON File: 'orchDetail.json'
+	def orchdata = readJSON file: 'orchDetail.json'
 	def i = 0
 	while (orchdata.responseData[i].title != 'DigitalRig'){
 	i++
