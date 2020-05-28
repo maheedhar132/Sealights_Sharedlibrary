@@ -29,7 +29,7 @@ curl '${fol_url}' -o orchDetail.json
 
 
 @NonCPS
-fetchOrchestrationStatus(apiKey,depId,runID){
+fetchOrchestrationStatus(apiKEy,depId,runID){
 String fos_url='https://app.virtualautomationengineer.com/api/oapi/processdeploymentstatusbyrunid'+'/?accesstoken='+apiKey+'&deploymentid='+depId+'&runid='+runID+'&response_type=json'
 sh"""
 curl '${fos_url}' -o orchStatus.json
@@ -119,6 +119,7 @@ fetchOrchDetails('16564',sessionToken)
 	i++
 	if(orchdata.responseData[i].title != 'DigitalRig'){
 	depID=orchdata.responseData[i].orchJenkinId
+	runID=orchdata.responseData[i].lastRunId
 	}
 	
 	}
@@ -127,6 +128,8 @@ fetchOrchDetails('16564',sessionToken)
 runOrch(depID,apiKEy)
 
 
+
+fetchOrchestrationStatus(apiKEy,depId,runID)
 
 
 
