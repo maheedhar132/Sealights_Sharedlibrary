@@ -39,7 +39,7 @@ curl '${fos_url}' -o orchStatus.json
 
 @NonCPS
 runOrch(depID,apiKEy){
-String ro_url='https://app.virtualautomationengineer.com/api/v1?method=processDeployment&'+'actionFor=execute'+'&deploymentid='+depID+'&apiKey='+apiKey
+String ro_url='https://app.virtualautomationengineer.com/api/v1?method=processDeployment&'+'actionFor=execute'+'&deploymentid='+depID+'&apiKey='+apiKEy
 sh """
 curl '${ro_url}' -o runOrch.json
 """
