@@ -30,7 +30,7 @@ curl '${fol_url}' -o orchDetail.json
 
 @NonCPS
 fetchOrchestrationStatus(apiKEy,depId,runID){
-String fos_url='https://app.virtualautomationengineer.com/api/oapi/processdeploymentstatusbyrunid'+'/?accesstoken='+apiKey+'&deploymentid='+depId+'&runid='+runID+'&response_type=json'
+String fos_url='https://app.virtualautomationengineer.com/api/oapi/processdeploymentstatusbyrunid'+'/?accesstoken='+apiKEy+'&deploymentid='+depId+'&runid='+runID+'&response_type=json'
 sh"""
 curl '${fos_url}' -o orchStatus.json
 """
