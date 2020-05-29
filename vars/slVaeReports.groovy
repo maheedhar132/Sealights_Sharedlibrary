@@ -48,7 +48,7 @@ curl '${ro_url}' -o runOrch.json
 
 @NonCPS
 getAccessToken(apiKey,apiSec){
-String at_url = 'https://app.virtualautomationengineer.com/api/oapi/getAccessToken/?apikey=' + apiKey+'&secret='+SecretKey+'&response_type=json'
+String at_url = 'https://app.virtualautomationengineer.com/api/oapi/getAccessToken/?apikey=' + apiKey+'&secret='+apiSec+'&response_type=json'
 sh """
 curl '${at_url}'
 """
