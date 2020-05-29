@@ -29,8 +29,8 @@ curl '${fol_url}' -o orchDetail.json
 
 
 @NonCPS
-fetchOrchestrationStatus(apiKey,depId,runID){
-String fos_url='https://app.virtualautomationengineer.com/api/v1?method=processDeployment&'+'actionFor=status&'+'deploymentid='+depId+'&apiKey='+apiKey+'&run_id='+runID
+fetchOrchestrationStatus(accessToken,depId,runID){
+String fos_url='https://app.virtualautomationengineer.com/api/oapi/processdeploymentstatusbyrunid/?accesstoken='+accessToken+'&deploymentid='+depID+'&runid='+runID+'&response_type=json'
 sh"""
 curl '${fos_url}' -o orchStatus.json
 """
@@ -50,7 +50,7 @@ curl '${ro_url}' -o runOrch.json
 getAccessToken(apiKey,apiSec){
 String at_url = 'https://app.virtualautomationengineer.com/api/oapi/getAccessToken/?apikey=' + apiKey+'&secret='+apiSec+'&response_type=json'
 sh """
-curl '${at_url}'
+curl '${at_url}' -o accessToken.json
 """
 }
 
@@ -138,7 +138,14 @@ runOrch(depID,apiKEy)
 
 getAccessToken(apiKey,apiSec)
 
-fetchOrchestrationStatus(apiKey,depID,runID)
+
+def accessTokenVar = readJSON file: 'accessToken.json'
+def accessToken = accessTokenVar.access_token
+
+
+
+
+fetchOrchestrationStatus(accessToken,depID,runID)
 
 
 
