@@ -46,6 +46,14 @@ curl '${ro_url}' -o runOrch.json
 }
 
 
+@NonCPS
+getAccessToken(apiKey,apiSec){
+String at_url = 'https://app.virtualautomationengineer.com/api/oapi/getAccessToken/?apikey=' + apiKey+'&secret='+SecretKey+'&response_type=json'
+sh """
+curl '${at_url}'
+"""
+}
+
 
 
 
@@ -128,7 +136,7 @@ fetchOrchDetails('16564',sessionToken)
 
 runOrch(depID,apiKEy)
 
-
+getAccessToken(apiKey,apiSec)
 
 fetchOrchestrationStatus(apiKey,depID,runID)
 
