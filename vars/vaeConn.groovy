@@ -63,7 +63,7 @@ triggerOrch(accessToken,depID){
 String to_url= 'https://app.virtualautomationengineer.com/api/oapi/rundeployment/?accesstoken='+accessToken+'&deploymentid='+depID+'&response_type=json'
 
 sh """
-curl '${to_url}'
+curl '${to_url}' -o triggerOrch.json
 """
 }
 
@@ -139,14 +139,14 @@ fetchOrchDetails('16564',sessionToken)
 	def orchdata = readJSON file: 'orchDetail.json'
 	def i = 0
 	String depID=''
-	String runID=''
+	//String runID=''
 	while (orchdata.responseData[i].title != 'DigitalRig'){
 	i++
 	println(orchdata.responseData[i].title)
 	
 	if(orchdata.responseData[i].title == 'DigitalRig'){
 	depID=orchdata.responseData[i].orchJenkinId
-	runID=orchdata.responseData[i].lastRunId
+	//runID=orchdata.responseData[i].lastRunId
 	println(depID)
 	break
 	}
@@ -166,4 +166,13 @@ accessToken=accessToken.replace("[","").replace("]","")
 
 //fetchOrchestrationStatus(accessToken,depID,runID)
 triggerOrch(accessToken,depID)
+
+def runIDvar = readJSON file: 'triggerOrch.json'
+String runID = runIDvar.RESULTSET[0].runid 
+
+
+
+
+
+
 }
