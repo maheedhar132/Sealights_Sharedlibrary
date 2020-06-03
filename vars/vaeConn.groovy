@@ -199,8 +199,9 @@ runID = runID_copy
 fetchOrchestrationStatus(accessToken,depID,runID)
 
 String orchStatusvar = new File("/var/lib/jenkins/workspace/${JOB_NAME}/orchStatus.json")
-String orchStatusjson = orchStatusvar.substring(orchStatusvar.indexOf("[") + 1, orchStatusvar.indexOf("]"))
 println(orchStatusvar)
+String orchStatusjson = orchStatusvar.substring(orchStatusvar.indexOf("[") + 1, orchStatusvar.indexOf("]"))
+
 println(orchStatusjson)
 def orchStatusjsonvar = readJSON text : orchStatusjson
 String orchStatus = orchStatusjsonvar.status 
