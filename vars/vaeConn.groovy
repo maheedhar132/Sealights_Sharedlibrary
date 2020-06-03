@@ -181,7 +181,7 @@ println(runIDvar.length())
 if(runIDvar.length()!=67){
 String runIDjson = runIDvar.substring(runIDvar.indexOf("[") + 1, runIDvar.indexOf("]"))
 }
-def runIDjson = readJSON text: runIDjson
+def runIDjsonvar = readJSON text: runIDjson
 String runID = runIDjsonvar.runid
 
 
