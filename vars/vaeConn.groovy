@@ -154,7 +154,7 @@ getAccessToken(apiKey,apiSec)
 
 
 def accessTokenVar = readJSON file: 'accessToken.json'
-def accessToken = accessTokenVar.access_token
+String accessToken = accessTokenVar.access_token
 
 accessToken=accessToken.replace("[","").replace("]","")
 
