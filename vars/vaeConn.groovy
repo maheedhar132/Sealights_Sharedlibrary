@@ -180,9 +180,10 @@ println(runIDvar)
 println(runIDvar.length())
 if(runIDvar.length()!=67){
 String runIDjson = runIDvar.substring(runIDvar.indexOf("[") + 1, runIDvar.indexOf("]"))
-}
 def runIDjsonvar = readJSON text: runIDjson
 String runID = runIDjsonvar.runid
+}
+
 
 
 fetchOrchestrationStatus(accessToken,depID,runID)
