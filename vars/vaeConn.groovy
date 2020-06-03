@@ -145,6 +145,7 @@ fetchOrchDetails('16564',sessionToken)
 	if(orchdata.responseData[i].title != 'DigitalRig'){
 	depID=orchdata.responseData[i].orchJenkinId
 	runID=orchdata.responseData[i].lastRunId
+	break
 	}
 	
 	}
