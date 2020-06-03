@@ -210,7 +210,7 @@ while(orchStatus == "PROCESSING"){
 sleep(300000)
 sh """ rm -rf orchStatus.json """
 fetchOrchestrationStatus(accessToken,depID,runID)
- orchStatusvar = new File("/var/lib/jenkins/workspace/${JOB_NAME}/orchStatus.json")
+ orchStatusvar = new File("/var/lib/jenkins/workspace/${JOB_NAME}/orchStatus.json").text
  orchStatusjson = orchStatusvar.substring(orchStatusvar.indexOf("[") + 1, orchStatusvar.indexOf("]"))
  orchStatusjsonvar = readJSON text : orchStatusjson
  orchStatus = orchStatusjsonvar.status 
