@@ -67,7 +67,12 @@ curl '${to_url}' -o triggerOrch.json
 """
 }
 
-
+//Download orchestartion Results
+downloadReports(accessToken,depID,runID){
+dr_url= 'https://app.virtualautomationengineer.com/api/oapi/processdeploymentstatusbyrunid/?accesstoken='+accessToken+'&deploymentid='+depID+'&runid='+runID+'&response_type=junit'
+sh """
+curl '${dr_url}'
+}
 
 
 
@@ -191,6 +196,26 @@ runID = runID_copy
 
 
 fetchOrchestrationStatus(accessToken,depID,runID)
+
+String orchStatusvar = new File("/var/lib/jenkins/workspace/${JOB_NAME}/orchStatus.json")
+String orchStatusjson = orchStatusvar.substring(orchStatusvar.indexOf("[") + 1, orchStatusvar.indexOf("]"))
+def orchStatusjsonvar = readJSON text : orchStatusjson
+String orchStatus = orchStatusjsonvar.status 
+
+while(orchStatus == "PROCESSING"){
+sleep(300000)
+sh """ rm -rf orchStatus.json """
+fetchOrchestrationStatus(accessToken,depID,runID)
+ orchStatusvar = new File("/var/lib/jenkins/workspace/${JOB_NAME}/orchStatus.json")
+ orchStatusjson = orchStatusvar.substring(orchStatusvar.indexOf("[") + 1, orchStatusvar.indexOf("]"))
+ orchStatusjsonvar = readJSON text : orchStatusjson
+ orchStatus = orchStatusjsonvar.status 
+if(orchStatus!="PROCESSING"){
+downloadReports(accessToken,depID,runID)
+break
+}
+
+}
 
 
 
