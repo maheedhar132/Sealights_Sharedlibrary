@@ -72,6 +72,7 @@ downloadReports(accessToken,depID,runID){
 dr_url= 'https://app.virtualautomationengineer.com/api/oapi/processdeploymentstatusbyrunid/?accesstoken='+accessToken+'&deploymentid='+depID+'&runid='+runID+'&response_type=junit'
 sh """
 curl '${dr_url}'
+"""
 }
 
 
