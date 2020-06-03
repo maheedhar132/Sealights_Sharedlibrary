@@ -205,6 +205,7 @@ String orchStatusjson = orchStatusvar.substring(orchStatusvar.indexOf("[") + 1, 
 println(orchStatusjson)
 def orchStatusjsonvar = readJSON text : orchStatusjson
 String orchStatus = orchStatusjsonvar.status 
+println(orchStatusjsonvar)
 println(orchStatus)
 while(orchStatus == "PROCESSING"){
 //sleep(300000)
