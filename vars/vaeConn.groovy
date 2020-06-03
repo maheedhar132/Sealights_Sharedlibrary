@@ -208,7 +208,7 @@ String orchStatus = orchStatusjsonvar.Status
 println(orchStatusjsonvar)
 println(orchStatus)
 while(orchStatus == "PROCESSING"){
-sleep(3000)
+sleep(30)
 sh """ rm -rf orchStatus.json """
 fetchOrchestrationStatus(accessToken,depID,runID)
  orchStatusvar = new File("/var/lib/jenkins/workspace/${JOB_NAME}/orchStatus.json").text
