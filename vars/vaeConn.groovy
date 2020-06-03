@@ -171,7 +171,7 @@ def runIDvar = readJSON file: 'triggerOrch.json'
 String runID = runIDvar.RESULTSET[0].runid 
 
 
-
+fetchOrchestrationStatus(accessToken,depID,runID)
 
 
 
