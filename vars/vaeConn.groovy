@@ -167,8 +167,13 @@ accessToken=accessToken.replace("[","").replace("]","")
 //fetchOrchestrationStatus(accessToken,depID,runID)
 triggerOrch(accessToken,depID)
 
-def runIDvar = readJSON file: 'triggerOrch.json'
-String runID = runIDvar.RESULTSET.runid 
+//def runIDvar = readJSON file: 'triggerOrch.json'
+//String runID = runIDvar.RESULTSET.runid 
+
+String runIDvar = new File(triggerOrch.json).text
+String runIDjson = runIDvar.substring(text.indexOf('[') + 1, text.indexOf(']')))
+
+
 
 
 fetchOrchestrationStatus(accessToken,depID,runID)
