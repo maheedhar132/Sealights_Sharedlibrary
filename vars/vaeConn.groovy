@@ -171,7 +171,7 @@ triggerOrch(accessToken,depID)
 //String runID = runIDvar.RESULTSET.runid 
 
 String runIDvar = new File(triggerOrch.json).text
-String runIDjson = runIDvar.substring(text.indexOf('[') + 1, text.indexOf(']')))
+String runIDjson = runIDvar.substring(text.indexOf('[') + 1, text.indexOf(']'))
 
 
 
