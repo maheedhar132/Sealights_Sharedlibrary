@@ -169,8 +169,15 @@ triggerOrch(accessToken,depID)
 
 
 
+
+
+
+
+
+
 String runIDvar = new File("/var/lib/jenkins/workspace/${JOB_NAME}/triggerOrch.json").text
 println(runIDvar)
+println(runIDvar.length())
 String runIDjson = runIDvar.substring(runIDvar.indexOf("[") + 1, runIDvar.indexOf("]"))
 
 
