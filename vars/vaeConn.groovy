@@ -204,7 +204,7 @@ String orchStatusjson = orchStatusvar.substring(orchStatusvar.indexOf("[") + 1, 
 
 println(orchStatusjson)
 def orchStatusjsonvar = readJSON text : orchStatusjson
-String orchStatus = orchStatusjsonvar.status 
+String orchStatus = orchStatusjsonvar.Status 
 println(orchStatusjsonvar)
 println(orchStatus)
 while(orchStatus == "PROCESSING"){
@@ -214,7 +214,7 @@ fetchOrchestrationStatus(accessToken,depID,runID)
  orchStatusvar = new File("/var/lib/jenkins/workspace/${JOB_NAME}/orchStatus.json").text
  orchStatusjson = orchStatusvar.substring(orchStatusvar.indexOf("[") + 1, orchStatusvar.indexOf("]"))
  orchStatusjsonvar = readJSON text : orchStatusjson
- orchStatus = orchStatusjsonvar.status 
+ orchStatus = orchStatusjsonvar.Status 
 if(orchStatus!="PROCESSING"){
 downloadReports(accessToken,depID,runID)
 break
