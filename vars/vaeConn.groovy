@@ -49,8 +49,8 @@ curl '${at_url}' -o accessToken.json
 
 //Fetch Orchestrations Status
 @NonCPS
-fetchOrchestrationStatus(accessToken,depId,runID){
-String fos_url='https://app.virtualautomationengineer.com/api/oapi/processdeploymentstatusbyrunid/?accesstoken='+accessToken+'&deploymentid='+depId+'&runid='+runID+'&response_type=json'
+fetchOrchestrationStatus(accessToken,depID,runID){
+String fos_url='https://app.virtualautomationengineer.com/api/oapi/processdeploymentstatusbyrunid/?accesstoken='+accessToken+'&deploymentid='+depID+'&runid='+runID+'&response_type=json'
 sh"""
 curl '${fos_url}' -o orchStatus.json
 """
@@ -58,9 +58,9 @@ curl '${fos_url}' -o orchStatus.json
 
 //Run Orchestrations and also check if it is running.
 @NonCPS
-triggerOrch(accessToken,depId){
+triggerOrch(accessToken,depID){
 
-String to_url= 'https://app.virtualautomationengineer.com/api/oapi/rundeployment/?accesstoken='+accessToken+'&deploymentid='+depId+'&response_type=json'
+String to_url= 'https://app.virtualautomationengineer.com/api/oapi/rundeployment/?accesstoken='+accessToken+'&deploymentid='+depID+'&response_type=json'
 
 sh """
 curl '${to_url}'
