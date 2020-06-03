@@ -142,6 +142,7 @@ fetchOrchDetails('16564',sessionToken)
 	String runID=''
 	while (orchdata.responseData[i].title != 'DigitalRig'){
 	i++
+	print(orchdata.responseData[i].title)
 	if(orchdata.responseData[i].title != 'DigitalRig'){
 	depID=orchdata.responseData[i].orchJenkinId
 	runID=orchdata.responseData[i].lastRunId
