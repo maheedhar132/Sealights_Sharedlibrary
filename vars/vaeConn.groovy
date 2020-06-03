@@ -139,14 +139,14 @@ fetchOrchDetails('16564',sessionToken)
 	def orchdata = readJSON file: 'orchDetail.json'
 	def i = 0
 	String depID=''
-	//String runID=''
+	String runID_copy=''
 	while (orchdata.responseData[i].title != 'DigitalRig'){
 	i++
 	println(orchdata.responseData[i].title)
 	
 	if(orchdata.responseData[i].title == 'DigitalRig'){
 	depID=orchdata.responseData[i].orchJenkinId
-	//runID=orchdata.responseData[i].lastRunId
+	runID_copy = orchdata.responseData[i].lastRunId
 	println(depID)
 	break
 	}
@@ -185,20 +185,9 @@ def runIDjsonvar = readJSON text: runIDjson
 runID = runIDjsonvar.runid
 }
 if(runIDvar.length()==67){
-def runIDjson = 
-while (orchdata.responseData[i].title != 'DigitalRig'){
-	i++
-	println(orchdata.responseData[i].title)
-	
-	if(orchdata.responseData[i].title == 'DigitalRig'){
-	//depID=orchdata.responseData[i].orchJenkinId
-	runID=orchdata.responseData[i].lastRunId
-	println(depID)
-	break
-	}
-	
-	}
-}
+runID = runID_copy
+} 
+
 
 
 fetchOrchestrationStatus(accessToken,depID,runID)
