@@ -56,6 +56,24 @@ curl '${fos_url}' -o orchStatus.json
 """
 }
 
+//Run Orchestrations and also check if it is running.
+@NonCPS
+triggerOrch(accessToken,depId){
+
+String to_url= 'https://app.virtualautomationengineer.com/api/oapi/rundeployment/?accesstoken='+accessToken+'&deploymentid='+depId+'&response_type=json'
+
+sh """
+curl '${rO_url}'
+"""
+}
+
+
+
+
+
+
+
+
 def call(jsondata,rigEnv){
 def env = rigEnv
 def jsonString = jsondata
@@ -130,7 +148,7 @@ fetchOrchDetails('16564',sessionToken)
 	}
 	
 	}
-	runOrch(depID,apiKey)
+	//runOrch(depID,apiKey)
 
 getAccessToken(apiKey,apiSec)
 
@@ -141,9 +159,6 @@ def accessToken = accessTokenVar.access_token
 
 
 
-fetchOrchestrationStatus(accessToken,depID,runID)
-
-
-
-
+//fetchOrchestrationStatus(accessToken,depID,runID)
+triggerOrch(accessToken,depID)
 }
