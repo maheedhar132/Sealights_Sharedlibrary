@@ -184,7 +184,21 @@ String runIDjson = runIDvar.substring(runIDvar.indexOf("[") + 1, runIDvar.indexO
 def runIDjsonvar = readJSON text: runIDjson
 runID = runIDjsonvar.runid
 }
-
+if(runIDvar.length()==67){
+def runIDjson = 
+while (orchdata.responseData[i].title != 'DigitalRig'){
+	i++
+	println(orchdata.responseData[i].title)
+	
+	if(orchdata.responseData[i].title == 'DigitalRig'){
+	//depID=orchdata.responseData[i].orchJenkinId
+	runID=orchdata.responseData[i].lastRunId
+	println(depID)
+	break
+	}
+	
+	}
+}
 
 
 fetchOrchestrationStatus(accessToken,depID,runID)
