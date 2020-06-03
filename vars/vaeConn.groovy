@@ -63,7 +63,7 @@ triggerOrch(accessToken,depId){
 String to_url= 'https://app.virtualautomationengineer.com/api/oapi/rundeployment/?accesstoken='+accessToken+'&deploymentid='+depId+'&response_type=json'
 
 sh """
-curl '${rO_url}'
+curl '${to_url}'
 """
 }
 
