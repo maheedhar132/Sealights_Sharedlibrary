@@ -150,6 +150,7 @@ fetchOrchDetails('16564',sessionToken)
 	}
 	
 	}
+	println(depID)
 	//runOrch(depID,apiKey)
 
 getAccessToken(apiKey,apiSec)
