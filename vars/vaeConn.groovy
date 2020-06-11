@@ -214,7 +214,7 @@ while(orchStatus == "PROCESSING"){
 sleep(300)
 sh """ rm -rf orchStatus.json """
 fetchOrchestrationStatus(accessToken,depID,runID)
- Orchstatusva1 = readJSON file :'Orchstatus.json'
+ Orchstatusva1 = readJSON file :'orchStatus.json'
  orchStatus = Orchstatusva1.RESULTSET[0].Status
  lastRunStatus = Orchstatusva1.RESULTSET[0].last_execution_status
  if (orchStatus == "Completed" && lastRunStatus == "Passed"){
