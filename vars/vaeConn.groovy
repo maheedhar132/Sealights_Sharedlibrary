@@ -208,21 +208,36 @@ def orchStatusjsonvar = readJSON text : orchStatusjson
 String orchStatus = orchStatusjsonvar.Status 
 println(orchStatusjsonvar)
 println(orchStatus)
+def Orchstatusva1 = ""
+
 while(orchStatus == "PROCESSING"){
 sleep(300)
 sh """ rm -rf orchStatus.json """
 fetchOrchestrationStatus(accessToken,depID,runID)
- orchStatusvar = new File("/var/lib/jenkins/workspace/${JOB_NAME}/orchStatus.json").text
- orchStatusjson = orchStatusvar.substring(orchStatusvar.indexOf("[") + 1, orchStatusvar.indexOf("]"))
- orchStatusjsonvar = readJSON text : orchStatusjson
- orchStatus = orchStatusjsonvar.Status 
-if(orchStatus!="PROCESSING"){
+ Orchstatusva1 = readJSON file :'Orchstatus.json'
+ orchStatus = Orchstatusva1.RESULTSET[0].Status
+ lastRunStatus = Orchstatusva1.RESULTSET[0].last_execution_status
+ if (orchStatus == "Completed" && lastRunStatus == "Passed"){
+ println("Test Case Passed")
+ break
+ }
+ if (orchStatus == "Completed" && lastRunStatus == "Failure"){
+ println("Test Case Failed")
+ break
+ }
+ if (orchStatus == "PROCESSING" && lastRunStatus == "Incomplete"){
+ println("Error in provisioning")
+ break
+ }
+}
+getAccessToken(apiKey,apiSec)
+
+
+ accessTokenVar = readJSON file: 'accessToken.json'
+ accessToken = accessTokenVar.access_token
+
+accessToken=accessToken.replace("[","").replace("]","")
 downloadReports(accessToken,depID,runID)
-break
-}
 
-}
-
-
-
+ }
 }
