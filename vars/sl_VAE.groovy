@@ -301,7 +301,7 @@ accessToken=accessToken.replace("[","").replace("]","")
 downloadReports(accessToken,depID,runID)
 
 //UploadReports
-sh """ java -jar sl-test-listener.jar uploadReports -tokenfile node_sltoken.txt -buildsessionid buildSessionId -reportFile 'results.xml'  -source 'Junit xml report'"""
+sh """ java -jar sl-test-listener.jar uploadReports -tokenfile node_sltoken.txt -buildsessionid buildSessionId -reportFile 'reports.xml'  -source 'Junit xml report'"""
 
 //Stop Listner
 sh """ java -jar sl-test-listener.jar end -tokenfile node_sltoken.txt -buildsessionid buildSessionId"""
