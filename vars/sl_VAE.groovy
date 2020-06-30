@@ -119,7 +119,7 @@ String projName = jsonObj.ct.projects.project.$project_name
 String appUrl = jsonObj.ct.projects.project.$application_url
 
 
-def code_quality_toolName = jsonObj.code_qualiti.tool.name
+def code_quality_toolName = jsonObj.code_quality.tool.name
 
 
 
