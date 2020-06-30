@@ -1,5 +1,5 @@
 //Downloading the Java agents
-sh """wget https://agents.sealights.co/sealights-java/sealights-java-latest.zip"""
+sh """wget -nv https://agents.sealights.co/sealights-java/sealights-java-latest.zip"""
 sh """unzip sealights-java-latest.zip"""
 
 
@@ -161,7 +161,9 @@ def output1 = utils.getToolDetails(rigUrl,code_quality_toolName,rigletName)
 	sh "sudo cat node_sltoken.txt"
 
 //Start test listner
-sh """java -jar sl-test-listener.jar start -tokenfile node_sltoken.txt -buildsessionid buildSessionId -testStage 'VAE Tests' """
+sh """echo ${buildSessionId}"""
+
+sh """java -jar sl-test-listener.jar start -tokenfile node_sltoken.txt -buildsessionid '${buildSessionId}' -testStage 'VAE Tests' """
 
 
 
