@@ -6,7 +6,6 @@ String url = siteUrl+'/partnerapi/account/generatetoken?apiKey='+apiKey_new+'&ap
 sh """
 curl --location --request POST '${url}' -o funOutput.json
 """
-
 }
 @NonCPS
 generatesessionToken(funToken,userId,siteUrl){
