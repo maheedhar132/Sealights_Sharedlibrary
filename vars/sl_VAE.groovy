@@ -26,8 +26,8 @@ curl --location --request POST '${url}' -o funOutput.json
 //Generate User Session Token
 @NonCPS
 generatesessionToken(funToken,userId,siteUrl){
-funToken = funToken.replace("\n","")
-userId = userId.replace("\n","")
+//funToken = funToken.replace("\n","")
+//userId = userId.replace("\n","")
 gst_url = siteUrl+'/partnerapi/user/login?functionizeToken='+funToken+'&functionizeUserIdentifier='+userId
 sh"""
 curl --location --request POST '${gst_url}' -o userSession.json
