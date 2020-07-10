@@ -17,7 +17,7 @@ sh """unzip sealights-java-latest.zip"""
 generateFunctionizeToken(apiKey,apiSec,roleName,siteUrl){
 //String apiKey_new = apiKey.replace("\n","")
 //String apiSec_new = apiSec.replace("\n","")
-String url = siteUrl+'/partnerapi/account/generatetoken?apiKey='+apiKey_new+'&apiSecret='+apiSec_new+'&role='+roleName
+String url = siteUrl+'/partnerapi/account/generatetoken?apiKey='+apiKey+'&apiSecret='+apiSec+'&role='+roleName
 sh """
 curl --location --request POST '${url}' -o funOutput.json
 """
