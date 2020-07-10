@@ -183,7 +183,7 @@ println(resultJson)
 //String apiKey = resultJson.apiKey
 sh """echo '${apikey}'"""
 print(apiKey)
-String apiKey = ${apikey}
+String apiKey = apikey
 String apiSec = resultJson.apiSecret
 String roleName = resultJson.roleName
 String siteUrl = resultJson.url
