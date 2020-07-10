@@ -180,7 +180,8 @@ if (response_code_status != "200")
   }
 def resultJson = readJSON text: new_output
 println(resultJson)
-String apiKey = resultJson.apiKey
+//String apiKey = resultJson.apiKey
+String apiKey = ${apikey}
 String apiSec = resultJson.apiSecret
 String roleName = resultJson.roleName
 String siteUrl = resultJson.url
@@ -304,10 +305,10 @@ accessToken=accessToken.replace("[","").replace("]","")
 downloadReports(accessToken,depID,runID)
 
 //UploadReports
-sh """ java -jar sl-test-listener.jar uploadReports -tokenfile node_sltoken.txt -buildsessionid buildSessionId -reportFile 'reports.xml'  -source 'Junit xml report'"""
+sh """ java -jar sl-test-listener.jar uploadReports -tokenfile node_sltoken.txt -buildsessionid ${buildSessionId} -reportFile 'reports.xml'  -source 'Junit xml report'"""
 
 //Stop Listner
-sh """ java -jar sl-test-listener.jar end -tokenfile node_sltoken.txt -buildsessionid buildSessionId"""
+sh """ java -jar sl-test-listener.jar end -tokenfile node_sltoken.txt -buildsessionid ${buildSessionId}"""
 
 
 
