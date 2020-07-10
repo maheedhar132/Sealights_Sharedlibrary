@@ -187,7 +187,7 @@ String apiKey = apikey
 String apiSec = resultJson.apiSecret
 String roleName = resultJson.roleName
 String siteUrl = resultJson.url
-String userId= resultJson.functionizeUserIdentifier
+String userId= resultJson.userId
 
 
 
