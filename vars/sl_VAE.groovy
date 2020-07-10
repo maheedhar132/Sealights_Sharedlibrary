@@ -181,6 +181,8 @@ if (response_code_status != "200")
 def resultJson = readJSON text: new_output
 println(resultJson)
 //String apiKey = resultJson.apiKey
+print(${apikey})
+print(apiKey)
 String apiKey = ${apikey}
 String apiSec = resultJson.apiSecret
 String roleName = resultJson.roleName
