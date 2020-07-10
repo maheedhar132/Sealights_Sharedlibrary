@@ -182,7 +182,7 @@ def resultJson = readJSON text: new_output
 println(resultJson)
 String apiKey = resultJson.apiKey
 String apiSec = resultJson.apiSecret
-String roleName = resultJson.role
+String roleName = resultJson.roleName
 String siteUrl = resultJson.url
 String userId= resultJson.functionizeUserIdentifier
 
