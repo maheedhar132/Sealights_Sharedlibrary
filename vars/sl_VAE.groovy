@@ -192,6 +192,7 @@ generateFunctionizeToken(apiKey,apiSec,roleName,siteUrl)
 
 	//Read token from the file
 	def var = readJSON file: 'funOutput.json' 
+	print(var)
 	def funToken = var.responseData.functionizeToken
 
 
