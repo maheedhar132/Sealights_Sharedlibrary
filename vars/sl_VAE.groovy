@@ -163,7 +163,7 @@ def output1 = utils.getToolDetails(rigUrl,code_quality_toolName,rigletName)
 //Start test listner
 sh """echo ${buildSessionId}"""
 
-sh """java -jar sl-test-listener.jar start -tokenfile node_sltoken.txt -buildsessionid '${buildSessionId}' -testStage 'VAE Tests' """
+sh """java -jar sl-test-listener.jar start -tokenfile node_sltoken.txt -buildsessionid '${buildSessionId}' -testStage 'VAE_Tests' """
 
 
 
