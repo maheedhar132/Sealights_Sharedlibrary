@@ -43,7 +43,7 @@ while (a < envCount)
 }
 
 String toolName=jsonObj.scm.tool.name
-String rigletName=jsonObj.riglet_info.$name
+String rigletName=jsonObj.riglet_info.name
 String projname = readFile('gitlab_project_name.txt')
 println(projname)
 String projName=projname.toLowerCase()

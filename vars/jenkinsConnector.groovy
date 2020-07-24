@@ -26,8 +26,8 @@ def env = rigEnv
 	String code_quality_toolName=jsonObj.code_quality.tool.name
 	String ci_toolName=jsonObj.ci.tool.name
 	
-	String rigletName=jsonObj.riglet_info.$name
-	String temp_job=jsonObj.ci.pipelines.pipeline.$pipeline_name
+	String rigletName=jsonObj.riglet_info.name
+	String temp_job=jsonObj.ci.pipelines.pipeline.pipeline_name
 	String jenkins_job_name=temp_job.replace("[","").replace("]","")
 	println(jenkins_job_name)
 	
@@ -60,9 +60,9 @@ def env = rigEnv
 	//GIT SCM TOOL Details
 	
 	String scm_toolName=jsonObj.scm.tool.name
-//String rigletName=jsonObj.riglet_info.$name
+//String rigletName=jsonObj.riglet_info.name
 
-String projName=jsonObj.scm.projects.project[0].$project_name
+String projName=jsonObj.scm.projects.project[0].project_name
 String projUrlName=projName.toLowerCase()
 
 String projDescription=jsonObj.scm.projects.project[0].project_description

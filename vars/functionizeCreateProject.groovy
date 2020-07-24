@@ -53,10 +53,10 @@ while (a < envCount)
    a++;
 }
 def testing_toolName= jsonObj.ct.tool.name
-def rigletName = jsonObj.riglet_info.$name
+def rigletName = jsonObj.riglet_info.name
 //String roleName = jsonObj.ct.projects.project.role
-String projName = jsonObj.ct.projects.project.$project_name
-String appUrl = jsonObj.ct.projects.project.$application_url
+String projName = jsonObj.ct.projects.project.project_name
+String appUrl = jsonObj.ct.projects.project.application_url
 
 def output = utils.getToolDetails(rigUrl,testing_toolName,rigletName)
 def new_output = output.substring(0, output.lastIndexOf("}")  + 1)       
